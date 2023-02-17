@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page Posts {% endblock %}
+
+
+
+{% block body %}
+    <h1>PAGE POSTS</h1>
+
+
+
+    {% for posts in post %}
+    <table class="table">
+
+
+            <tbody>
+            <tr>
+                <th>Title</th>
+                <td>{{ posts.id }}</td>
+            </tr>
+
+            </tbody>
+
+
+    </table>
+    {% endfor %}
+
+
+
+
+
+{% endblock %}

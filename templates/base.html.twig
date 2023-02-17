@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Template{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="icon" href="/img/Favicon1.png">
+
+</head>
+
+
+<body class="container-fluid body-contain">
+
+<header class="container-fluid header-contain">
+    {{ include('elements/nav.twig') }}
+</header>
+
+
+<main class="main-content">
+
+    {% block body %}
+
+    {% endblock %}
+</main>
+
+
+<footer class="footer-content">
+    <div class="bloc-footer">
+        <div class="bloc-picto">
+            <a href="https://fr-fr.facebook.com/" target="_blank"><img class="picto" alt="logo-facebook"
+                                                                       src="/img/facebook.svg"></a>
+            <a href="https://www.instagram.com/" target="_blank"><img class="picto" alt="logo-facebook"
+                                                                      src="/img/instagram.svg"></a>
+            <a href="https://twitter.com/" target="_blank"><img class="picto" alt="logo-facebook"
+                                                                src="/img/twitter.svg"></a>
+        </div>
+        <div class=" link-footer ">
+            <ul>
+                <li>
+                    <a class="nav-link active" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Se connecter/S'inscrire</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/posts">Les Posts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-admin" href="/admin">Administration</a>
+                </li>
+
+            </ul>
+        </div>
+        <p class="copyright"> &copy; Le Blog d'Actarus | 2022-2023</p>
+
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+
+</html>

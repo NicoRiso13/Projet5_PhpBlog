@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Sarpanch:wght@400;500;600;700;800;900&display=swap');
+@font-face {
+    font-family: 'Neuropolitical';
+    src: url('../fonts/NeuropoliticalRg-Regular.woff2') format('woff2'),
+    url('../fonts/NeuropoliticalRg-Regular.woff') format('woff'),
+    url('../fonts/NeuropoliticalRg-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'virgo';
+    src: url('../fonts/virgo.ttf') format('truetype');
+}
+/*
+
+font-family: 'Orbitron', sans-serif;
+font-family: 'Sarpanch', sans-serif;
+
+*/
+
+.body-contain {
+    margin: 0;
+    padding: 0;
+
+}
+
+.header-contain {
+    margin: 0;
+    padding: 0;
+}
+.main-content{
+    height: max-content;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo-text h4 {
+    font-family: 'Neuropolitical', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+
+}
+
+.nav-separator {
+    width: 100%;
+    border: 1px solid #ffffff;
+    margin: 10px 0 10px 0;
+    display: none;
+    opacity: 0.8;
+}
+
+#nav {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+#nav li {
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.navbar-toggler-icon {
+    background-color: darkgrey;
+    border-radius: 5px;
+}
+
+
+
+
+/******************************* SECTION HOMEPAGE *******************************/
+
+.content-home-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 0 5px;
+    background-image: url("../img/background-homepage1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.logo-home-page{
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: #00c4ff 0 -1px 4px, #ffffff 0 -2px 10px, #00fff8 0 -10px 20px, #6381ff 0 -18px 40px, 5px 5px 15px 5px rgba(0,0,0,0);
+    border-radius: 250px;
+}
+
+.content-home-page h1 {
+    text-align: center;
+    font-size: 3.5rem;
+    color: #ffffff;
+    font-family: 'Neuropolitical', sans-serif;
+    font-weight: bold;
+    text-shadow: 0 0 5px #FFF, 0 0 5px #FFF, 0 0 15px #FFF, 0 0 20px #00c4ff, 0 0 30px #00c4ff, 0 0 40px #00c4ff, 0 0 55px #00c4ff, 2px 2px 1px rgba(255,116,13,0);}
+
+.content-home-page p {
+    text-align: center;
+    font-size: 3rem;
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    filter: drop-shadow(0 0 1rem #ff6a00);
+
+}
+
+
+/********************************** SECTION FOOTER *******************************/
+
+.bloc-footer {
+    display: flex;
+    flex-direction: column;
+    /*position: fixed;
+    bottom: 0;*/
+    width: 100%;
+    background-color: #212529;
+}
+
+.copyright {
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin: 10px 0 10px 0;
+}
+
+.bloc-picto {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.picto {
+    width: 60px;
+    margin: 5px;
+}
+
+.link-footer ul {
+    padding: 0;
+    margin: 5px 0 5px 0;
+}
+
+.link-footer li {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    list-style: none;
+    color: white;
+    font-size: 0.8rem;
+}
+
+.link-footer li:hover {
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    color: orange;
+    font-size: 0.9rem;
+    margin: -1.2px;
+}
+
+.link-admin {
+    color: grey;
+}
+
+.link-admin:hover {
+    color: deepskyblue;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    font-size: 0.9rem;
+}
+
+/********************************************************************************
+********************************* MEDIA QUERIES *********************************
+*******************************************************************************/
+
+/************************* 1227 PX **********************************/
+@media screen and (max-width: 1227px) {
+
+    .bloc-nav {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    #nav li {
+        font-size: 0.8rem;
+    }
+
+    .nav-separator {
+        display: unset;
+    }
+
+    .logo-text {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .logo-text h4 {
+        margin: 5px 0 5px 0;
+        font-size: 2rem
+    }
+    .content-home-page p {
+        font-size: 2rem;
+    }
+
+}
+/************************* 768 PX **********************************/
+@media screen and (max-width: 768px) {
+
+    .logo-text h4 {
+        font-family: 'Neuropolitical', sans-serif;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .logo-home-page{
+        width: 150px;
+    }
+    .content-home-page h1{
+        font-size: 2rem;
+    }
+    .picto{
+        width: 40px;
+    }
+    .link-footer li{
+        font-size: 0.6rem;
+    }
+    .content-home-page p {
+        font-size: 1.5rem;
+    }
+    /*
+    .bloc-footer{
+        position: absolute;
+        bottom: 0;
+    }
+    */
+
+}
+
+/************************* 576 PX **********************************/
+@media screen and (max-width: 576px) {
+
+
+    .content-home-page h1{
+        font-size: 1.5rem;
+    }
+    .content-home-page p {
+        font-size: 1rem;
+    }
+    .copyright {
+        font-size: 0.6rem;
+    }
+
+
+}
+
+/************************* 386 PX **********************************/
+@media screen and (max-width: 386px) {
+
+
+}
