@@ -17,7 +17,7 @@ class PostsRepository
             $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
+            echo ('Erreur : ' . $e->getMessage());
         }
 
 
@@ -28,7 +28,7 @@ class PostsRepository
 //        );
 
         $requete = $database->query($sql);
-        var_dump($requete);
+
         $posts = $requete->fetchAll(PDO::FETCH_ASSOC);
 
 

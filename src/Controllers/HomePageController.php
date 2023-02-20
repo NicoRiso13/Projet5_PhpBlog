@@ -15,7 +15,7 @@ class HomePageController
     }
 
 
-    public function HomePage()
+    public function homePage()
     {
         echo $this->twig->render('homePage.html.twig');
     }

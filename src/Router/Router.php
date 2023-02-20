@@ -13,7 +13,7 @@ class Router
 
         $router = new AltoRouter();
 
-        $router->map('GET', '/', [new \App\Controllers\HomePageController($twig), 'HomePage']);
+        $router->map('GET', '/', [new \App\Controllers\HomePageController($twig), 'homePage']);
         $router->map('GET', '/posts', [new \App\Controllers\PostsController($twig), 'postsView']);
 
         $match = $router->match();

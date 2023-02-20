@@ -21,7 +21,7 @@ class PostsController
         $postsRepository = new PostsRepository();
         $posts = $postsRepository->indexPosts();
 
-        var_dump($posts);
+
         echo $this->twig->render('posts.html.twig');
 
     }
