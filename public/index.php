@@ -15,7 +15,7 @@ $twig = new Environment($loader, [
 
 
 $router = new \App\Router\Router();
-$router->Routes($twig);
+$router->routes($twig);
 
 
 

@@ -7,20 +7,14 @@ use Twig\Environment;
 
 class Router
 {
-    public function Routes(Environment $twig )
+
+    public function routes(Environment $twig )
     {
 
         $router = new AltoRouter();
 
         $router->map('GET', '/', [new \App\Controllers\HomePageController($twig), 'HomePage']);
-        $router->map('GET', '/posts', [new \App\Controllers\PostsController($twig), 'PostsView']);
-        $router->map('GET', '/contact', [new \App\Controllers\ContactControllers($twig), 'Contact']);
-        $router->map('GET', '/login', [new \App\Controllers\LoginSubscribe($twig), 'Login']);
-//        $router->map('GET', '/login', [new \App\Controllers\LoginSubscribe($twig), 'DetailsPost']);
-//        $router->map('GET', '/login', [new \App\Controllers\LoginSubscribe($twig), 'Subscribe']);
-//        $router->map('GET', '/login', [new \App\Controllers\LoginSubscribe($twig), 'UserAccount']);
-//        $router->map('GET', '/login', [new \App\Controllers\LoginSubscribe($twig), 'ModifyAccount']);
-//        $router->map('GET', '/login', [new \App\Controllers\LoginSubscribe($twig), 'AdminPage']);
+        $router->map('GET', '/posts', [new \App\Controllers\PostsController($twig), 'postsView']);
 
         $match = $router->match();
 

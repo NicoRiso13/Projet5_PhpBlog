@@ -2,15 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Models\PostsModel;
+use App\Repository\PostsRepository;
 use Twig\Environment;
-
 
 
 class PostsController
 {
-
-
     private Environment $twig;
 
     public function __construct(Environment $twig)
@@ -18,18 +15,16 @@ class PostsController
         $this->twig = $twig;
     }
 
-
-    public function PostsView()
+    public function postsView()
     {
 
-        $posts = new PostsModel();
-        $posts->getPosts();
+        $postsRepository = new PostsRepository();
+        $posts = $postsRepository->indexPosts();
 
+        var_dump($posts);
         echo $this->twig->render('posts.html.twig');
 
     }
-
-
 
 
 }

@@ -1,31 +1,41 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Page Posts {% endblock %}
 
 
 
 {% block body %}
+
+
     <h1>PAGE POSTS</h1>
 
 
-
-    {% for posts in post %}
-    <table class="table">
-
-
-            <tbody>
-            <tr>
-                <th>Title</th>
-                <td>{{ posts.id }}</td>
-            </tr>
-
-            </tbody>
+        <ul>
+            {% for posts in post %}
+                <li>{{ post.title}}</li>
+            {% endfor %}
+        </ul>
 
 
-    </table>
-    {% endfor %}
 
 
+
+    {% set collection = [1, 2, 3] %}
+
+    <ul>
+        {% for item in collection %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+
+    {#
+    Va afficher seulement ce code HTML:
+
+    <ul>
+        <li>1</li><li>2</li><li>3</li>
+    </ul>
+    #}
 
 
 
