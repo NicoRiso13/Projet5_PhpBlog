@@ -14,7 +14,7 @@ class PostEntity
 
     private string $author;
     private string $content;
-    private dateTime $createdAt;
+    private DateTime $createdAt;
 
     public function __construct(int $id, string $title, string $subtitle, string $author, string $content, DateTime $createdAt)
     {
@@ -102,6 +102,11 @@ class PostEntity
      * @return DateTime
      */
     public function getCreatedAt(): DateTime
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(): DateTime
     {
         return $this->createdAt;
     }

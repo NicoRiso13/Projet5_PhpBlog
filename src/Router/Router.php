@@ -3,18 +3,19 @@
 namespace App\Router;
 
 use AltoRouter;
+use App\Repository\PostsRepository;
 use Twig\Environment;
 
 class Router
 {
 
-    public function routes(Environment $twig )
+    public function routes(Environment $twig, \PDO $database): void
     {
 
         $router = new AltoRouter();
 
         $router->map('GET', '/', [new \App\Controllers\HomePageController($twig), 'homePage']);
-        $router->map('GET', '/posts', [new \App\Controllers\PostsController($twig), 'postsView']);
+        $router->map('GET', '/posts', [new \App\Controllers\PostsController($twig, new PostsRepository($database)), 'postsView']);
 
         $match = $router->match();
 

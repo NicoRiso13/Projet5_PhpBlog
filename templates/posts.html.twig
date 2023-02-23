@@ -7,36 +7,30 @@
 
 {% block body %}
 
+    <section class="section-posts-view">
 
-    <h1>PAGE POSTS</h1>
+    <h1 class="titre-page-post-view">Liste des Posts</h1>
+    {% for post in posts %}
+        <section class="bloc-post m-4 ">
 
+            <div class="titre-post">
+                <h1>{{ post.title }}</h1>
+                <h5>Publié par : {{ post.author }} le {{ post.createdAt.format('d/m/Y') }}</h5>
+            </div>
+            <div class="soustitre-post">
+                <h3>{{ post.subtitle }}</h3>
+            </div>
 
-        <ul>
-            {% for posts in post %}
-                <li>{{ post.title}}</li>
-            {% endfor %}
-        </ul>
+            <div class="contenu-post">
+                <p>{{ post.content }}</p>
+            </div>
 
-
-
-
-
-    {% set collection = [1, 2, 3] %}
-
-    <ul>
-        {% for item in collection %}
-            <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
-
-    {#
-    Va afficher seulement ce code HTML:
-
-    <ul>
-        <li>1</li><li>2</li><li>3</li>
-    </ul>
-    #}
+            <div class="btn-details">
+                <button type="button" class="btn btn-primary">Voir détails</button>
+            </div>
 
 
+        </section>
 
+    {% endfor %}
 {% endblock %}

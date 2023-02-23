@@ -1,15 +1,24 @@
 {
-  "require": {
-    "fakerphp/faker": "^1.21",
-    "altorouter/altorouter": "^2.0",
-    "twig/twig": "v3.5.1",
-    "ext-pdo": "*",
-    "psr/container": "^2.0",
-    "twig/html-extra": "^3.5",
-    "twig/cache-extra": "^3.5",
-    "twig/string-extra": "^3.5",
-    "twig/cssinliner-extra": "^3.5"
 
+  "name": "projetphp/blogphp",
+  "description": "blogphp",
+  "license": "proprietary",
+  "type": "project",
+  "prefer-stable": true,
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
+  "require": {
+    "ext-pdo": "*",
+    "altorouter/altorouter": "^2.0",
+    "fakerphp/faker": "^1.21",
+    "psr/container": "^2.0",
+    "twig/cache-extra": "^3.5",
+    "twig/cssinliner-extra": "^3.5",
+    "twig/html-extra": "^3.5",
+    "twig/string-extra": "^3.5",
+    "twig/twig": "^3.5"
   },
   "autoload": {
     "psr-4": {

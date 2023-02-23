@@ -9,20 +9,23 @@ use Twig\Environment;
 class PostsController
 {
     private Environment $twig;
+    private PostsRepository $repository;
 
-    public function __construct(Environment $twig)
+
+    public function __construct(Environment $twig, PostsRepository $repository)
     {
         $this->twig = $twig;
+        $this->repository = $repository;
     }
 
-    public function postsView()
+    public function postsView():void
     {
 
-        $postsRepository = new PostsRepository();
-        $posts = $postsRepository->indexPosts();
+        $posts = $this->repository->indexPosts();
+
+        echo $this->twig->render('posts.html.twig', ["posts" => $posts]);
 
 
-        echo $this->twig->render('posts.html.twig');
 
     }
 
