@@ -2,6 +2,7 @@
 
 
 use Twig\Environment;
+use Twig\Extra\String\StringExtension;
 use Twig\Loader\FilesystemLoader;
 
 require '../vendor/autoload.php';
@@ -11,6 +12,7 @@ $loader = new FilesystemLoader('../templates');
 $twig = new Environment($loader, [
 //    'cache' => '../cache',
     'cache' => false,]);
+$twig ->addExtension(new StringExtension());
 
 try {
     $database = new PDO('mysql:host=localhost;dbname=blogphp;charset=utf8', 'root', '1234');

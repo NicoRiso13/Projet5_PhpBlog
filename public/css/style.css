@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Sarpanch:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Orbitron:wght@400;500;600;700;800;900&family=Sarpanch:wght@400;500;600;700;800;900&display=swap');
 
 @font-face {
     font-family: 'Neuropolitical';
@@ -19,8 +19,10 @@
 
 font-family: 'Orbitron', sans-serif;
 font-family: 'Sarpanch', sans-serif;
+font-family: 'Montserrat', sans-serif;
 
 */
+
 
 .body-contain {
     margin: 0;
@@ -50,12 +52,21 @@ font-family: 'Sarpanch', sans-serif;
 
 }
 
+.nav-carbon {
+    background-color: #1c1c1c;
+    border-bottom: 3px solid #ff6a00;
+}
+
+.bloc-nav {
+    padding: 0 20px
+}
+
 .nav-separator {
     width: 100%;
-    border: 1px solid #ffffff;
+    border: 2px solid #ff611f;
     margin: 10px 0 10px 0;
     display: none;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 #nav {
@@ -64,10 +75,16 @@ font-family: 'Sarpanch', sans-serif;
     width: 100%;
 }
 
+#nav a:hover {
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 10px #FFF, 0 0 12px #0366f8, 0 0 15px #0366f8, 0 0 22px #0366f8, 0 0 35px #0366f8, 0 0 50px #0366f8, 2px 2px 2px rgba(11, 134, 224, 0);
+    transition: 0.5s;
+}
+
 #nav li {
     font-weight: bold;
     font-family: 'Orbitron', sans-serif;
 }
+
 
 .navbar-toggler-icon {
     background-color: darkgrey;
@@ -83,8 +100,9 @@ font-family: 'Sarpanch', sans-serif;
     align-items: center;
     height: auto;
     padding: 0 5px;
-    background-image: url("../img/background-homepage1.png");
-    background-position: center;
+
+    background-image: url("../img/background-carbon1.png");
+    background-position: 0 50%;
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -95,6 +113,7 @@ font-family: 'Sarpanch', sans-serif;
     background-color: rgba(255, 255, 255, 0.7);
     box-shadow: #00c4ff 0 -1px 4px, #ffffff 0 -2px 10px, #00fff8 0 -10px 20px, #6381ff 0 -18px 40px, 5px 5px 15px 5px rgba(0, 0, 0, 0);
     border-radius: 250px;
+
 }
 
 .content-home-page h1 {
@@ -103,6 +122,7 @@ font-family: 'Sarpanch', sans-serif;
     color: #ffffff;
     font-family: 'Neuropolitical', sans-serif;
     font-weight: bold;
+
     text-shadow: 0 0 5px #FFF, 0 0 5px #FFF, 0 0 15px #FFF, 0 0 20px #00c4ff, 0 0 30px #00c4ff, 0 0 40px #00c4ff, 0 0 55px #00c4ff, 2px 2px 1px rgba(255, 116, 13, 0);
 }
 
@@ -113,26 +133,227 @@ font-family: 'Sarpanch', sans-serif;
     font-family: 'Orbitron', sans-serif;
     filter: drop-shadow(0 0 1rem #ff6a00);
 
+
+}
+
+/******************************* SECTION LOGIN *******************************/
+.section-Login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-login {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: #ff6a00;
+    width: 100%;
+}
+
+.bloc-login {
+    margin-bottom: 200px;
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 50px 30px;
+    border: 1px solid #ff611f;
+    border-radius: 30px;
+}
+
+.input-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.login-label {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    width: 100%;
+}
+
+.checked-form {
+    margin-top: 5px;
+}
+
+.bloc-btn-form-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 80px;
+}
+
+.btn-form-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.btn-form-login:hover {
+    background-color: #0c0c0c;
+    border-color: #0c0c0c;
+    color: white;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 10px #FFF, 0 0 12px #0366f8, 0 0 15px #0366f8, 0 0 22px #0366f8, 0 0 35px #0366f8, 0 0 50px #0366f8, 2px 2px 2px rgba(11, 134, 224, 0);
+    transition: 0.5s;
+    padding: -12px;
+    width: 45%;
+}
+
+.bloc-link-subscribe {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.bloc-link-subscribe a {
+    text-decoration: none;
+}
+
+.bloc-link-subscribe a:hover {
+    color: #ff6a00;
+    transition: 0.3s;
+}
+
+
+/******************************* SECTION REGISTER *******************************/
+.section-register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-register {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: #ff6a00;
+    width: 100%;
+}
+
+.bloc-register {
+    margin-bottom: 200px;
+}
+
+.form-register {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 50px 30px;
+    border-radius: 50px;
+}
+
+.input-register {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    width: 100%;
+}
+
+.input-register-picture {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.input-register-form {
+    width: 100%;
+
+}
+
+.register-label {
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.bloc-btn-form-register {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 100px;
+}
+
+.btn-form-register {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.btn-form-register:hover {
+    background-color: #0c0c0c;
+    border-color: #0c0c0c;
+    color: white;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 10px #FFF, 0 0 12px #0366f8, 0 0 15px #0366f8, 0 0 22px #0366f8, 0 0 35px #0366f8, 0 0 50px #0366f8, 2px 2px 2px rgba(11, 134, 224, 0);
+    transition: 1s;
+    border-radius: 50px;
+}
+
+.bloc-link-subscribe {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.bloc-link-subscribe a {
+    text-decoration: none;
+}
+
+.bloc-link-subscribe a:hover {
+    color: #ff6a00;
+    transition: 0.3s;
 }
 
 /******************************* SECTION POSTS VIEW *******************************/
 
 .section-posts-view {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 70px;
+
 
 }
 
 .titre-page-post-view {
-    background-color: #ff611f;
+    background-color: #0c0c0c;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 10px #FFF, 0 0 12px #0366f8, 0 0 15px #0366f8, 0 0 22px #0366f8, 0 0 35px #0366f8, 0 0 50px #0366f8, 2px 2px 2px rgba(11, 134, 224, 0);
     text-align: center;
+    line-height: 80px;
     color: white;
     padding: 15px;
     font-size: 2.5rem;
     margin-top: 2px;
+    margin-bottom: 50px;
+    font-family: 'Neuropolitical', sans-serif;
 }
 
 .bloc-post {
-    border-radius: 25px;
-    background-color: darkgrey;
+    border-radius: 10px;
+    border: 1px solid #696969;
+    margin: auto;
+    -webkit-box-shadow: 0 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    position: relative;
 }
 
 .titre-post {
@@ -140,33 +361,190 @@ font-family: 'Sarpanch', sans-serif;
     flex-direction: column;
     align-items: stretch;
     justify-content: space-between;
-    border-radius: 25px 25px 0 0;
+    border-radius: 10px 10px 0 0;
     padding: 10px 15px 10px 15px;
-    background-color: dimgrey;
+    border: 1px solid #696969;
     color: white;
+    background-image: url("../img/background-retro.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 30%;
+    font-family: 'Orbitron', sans-serif;
+    /*background: rgb(0,185,255);*/
+    /*background: linear-gradient(0deg, rgba(0,185,255,1) 0%, rgba(0,98,146,1) 33%, rgba(0,35,68,1) 62%, rgba(0,0,24,1) 91%);*/
 }
 
-.titre-post h5 {
+.titre-post h1 {
+    font-size: 1.5rem;
+    padding: 5px;
+    color: #ff6a00;
+
+}
+
+.titre-post h2 {
+    font-size: 1.2rem;
+    padding: 5px;
+}
+
+.titre-post h3 {
+    font-size: 0.8rem;
     margin-top: 5px;
     text-align: end;
 }
 
-.soustitre-post {
-    padding: 10px;
-}
 
 .contenu-post {
-    padding: 10px;
+    padding: 20px;
+    margin-bottom: 50px;
     text-align: justify-all;
     font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    text-overflow: Ellipsis;
+    Word-wrap: break-Word;
+    max-width: 75ch;
 }
 
 .btn-details {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-
     padding: 25px;
+    font-family: 'Orbitron', sans-serif;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.btn-neon:hover {
+    background-color: #0c0c0c;
+    border-color: #0c0c0c;
+    color: white;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 10px #FFF, 0 0 12px #0366f8, 0 0 15px #0366f8, 0 0 22px #0366f8, 0 0 35px #0366f8, 0 0 50px #0366f8, 2px 2px 2px rgba(11, 134, 224, 0);
+    transition: 0.5s;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+/********************************** SECTION POST DETAILS *******************************/
+
+.span-author {
+    color: #ff6a00;
+    font-weight: bold;
+}
+
+.titre-page-post-details {
+    background-color: #0c0c0c;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 10px #FFF, 0 0 12px #0366f8, 0 0 15px #0366f8, 0 0 22px #0366f8, 0 0 35px #0366f8, 0 0 50px #0366f8, 2px 2px 2px rgba(11, 134, 224, 0);
+    text-align: center;
+    line-height: 80px;
+    color: white;
+    padding: 15px;
+    font-size: 2.5rem;
+    margin-top: 2px;
+    margin-bottom: 50px;
+    font-family: 'Neuropolitical', sans-serif;
+}
+
+.bloc-post-details {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    border-radius: 10px 10px 0 0;
+    margin: 0 auto 60px auto;
+    border: 2px solid #696969;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+
+    /*background: rgb(0,185,255);*/
+    /*background: linear-gradient(0deg, rgba(0,185,255,1) 0%, rgba(0,98,146,1) 33%, rgba(0,35,68,1) 62%, rgba(0,0,24,1) 91%);*/
+}
+
+.header-bloc-post-details {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-radius: 10px 10px 0 0;
+    background-color: #0c0c0c;
+    padding: 10px 15px 10px 15px;
+}
+
+.post-details h1 {
+    font-size: 1.5rem;
+    padding: 5px;
+    color: #ff6a00;
+
+}
+
+.post-details h2 {
+    font-size: 1.2rem;
+    padding: 5px;
+}
+
+.published-at h3 {
+    font-size: 0.8rem;
+    margin: 0;
+    text-align: end;
+    padding: 5px;
+}
+
+.content-post-details {
+    color: #212529;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+}
+
+.bloc-post-commentarys {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+
+}
+
+.bloc-commentary {
+    width: 100%;
+    margin: 15px auto;
+    padding: 10px;
+    border: 1px solid #2a2a2a;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e8e8e8;
+}
+
+.bloc-commentary h4 {
+    font-size: 0.9rem;
+}
+
+.bloc-commentary h5 {
+    font-size: 0.8rem;
+}
+
+.bloc-post-commentarys h6 {
+    font-size: 1.3rem;
+    width: 100%;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    background-color: #ff6a00;
+    color: white;
+    line-height: 40px;
+}
+
+.bloc-form-commentary {
+    margin: 20px 0 20px 0;
+}
+
+.label-commentary {
+    font-family: 'Orbitron', sans-serif;
+}
+
+textarea {
+    box-sizing: border-box;
+    color: #2a2a2a;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 
@@ -179,6 +557,7 @@ font-family: 'Sarpanch', sans-serif;
     bottom: 0;*/
     width: 100%;
     background-color: #212529;
+    border-top: 3px solid #ff6a00;
 }
 
 .copyright {
@@ -267,6 +646,17 @@ font-family: 'Sarpanch', sans-serif;
 
 }
 
+/************************* 992 PX **********************************/
+@media screen and (max-width: 992px) {
+
+    .input-register {
+       justify-content: center;
+    }
+    .input-register-picture{
+        width: 60%;
+    }
+}
+
 /************************* 768 PX **********************************/
 @media screen and (max-width: 768px) {
 
@@ -321,6 +711,24 @@ font-family: 'Sarpanch', sans-serif;
         font-size: 0.6rem;
     }
 
+    .bloc-btn-form-login,.bloc-btn-form-register {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-form-login, .btn-form-register {
+        margin-top: 15px;
+    }
+    .input-register {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    .input-register-form{
+        width: 100%;
+    }
 
 }
 

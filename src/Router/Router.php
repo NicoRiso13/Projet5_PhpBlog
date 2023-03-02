@@ -3,7 +3,9 @@
 namespace App\Router;
 
 use AltoRouter;
+use App\Repository\CommentarysRepository;
 use App\Repository\PostsRepository;
+use App\Repository\UsersRepository;
 use Twig\Environment;
 
 class Router
@@ -15,7 +17,10 @@ class Router
         $router = new AltoRouter();
 
         $router->map('GET', '/', [new \App\Controllers\HomePageController($twig), 'homePage']);
-        $router->map('GET', '/posts', [new \App\Controllers\PostsController($twig, new PostsRepository($database)), 'postsView']);
+        $router->map('GET', '/login', [new \App\Controllers\LoginController($twig), 'loginPage']);
+        $router->map('GET', '/register', [new \App\Controllers\RegisterControllers($twig), 'registerPage']);
+        $router->map('GET', '/posts', [new \App\Controllers\PostsController($twig, new PostsRepository($database), new CommentarysRepository($database), new UsersRepository($database)), 'postsView']);
+        $router->map('GET', '/posts/[i:id]', [new \App\Controllers\PostsController($twig, new PostsRepository($database), new CommentarysRepository($database), new UsersRepository($database)), 'postDetails']);
 
         $match = $router->match();
 
@@ -29,6 +34,3 @@ class Router
 
     }
 }
-
-
-

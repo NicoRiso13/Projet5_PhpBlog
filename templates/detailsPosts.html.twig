@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block title %}Details Posts{% endblock %}
+
+{% block body %}
+
+
+    <h1 class="titre-page-post-details " xmlns="http://www.w3.org/1999/html">Details post</h1>
+
+    <div class="bloc-post-details col-10">
+        <div class="header-bloc-post-details">
+            <div class="post-details col-8">
+                <h1>{{ post.title }}</h1>
+                <h2>{{ post.subtitle }}</h2>
+            </div>
+            <div class="published-at ">
+                <h3>Publié par : {{ post.author }} le {{ post.createdAt.format('d/m/Y') }}</h3>
+            </div>
+        </div>
+        <div class="content-post-details">
+            <p> {{ post.content }}</p>
+        </div>
+
+    </div>
+
+    <div class="bloc-post-commentarys col-9">
+        <h6>Espace commentaires</h6>
+        <div class="bloc-form-commentary col-12">
+            <form class="commentary-form " method="post" action="submit-form-commentary">
+                <label class="label-commentary" for="text-commentary">Ajoutez votre commentaire</label>
+                <textarea class="col-12" id="text-commentary" name="text-commentary" rows="5"></textarea>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit" >Valider</button>
+                </div>
+            </form>
+        </div>
+        {% for commentary in commentarys %}
+            <div class="bloc-commentary">
+                <h5>Réponse publiée par : <span class="span-author">{{ users.pseudo }}</span>
+                    le {{ commentary.createdAt.format('d/m/Y') }}</h5>
+                <h4>{{ commentary.content }} </h4>
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+    <section class="bloc-detail-post m-4 ">
+
+
+    </section>
+
+
+
+
+{% endblock %}

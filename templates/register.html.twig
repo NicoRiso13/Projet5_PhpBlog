@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block title %}Créer un compte{% endblock %}
+
+
+
+{% block body %}
+
+
+
+    <section class="section-register">
+        <div class="title-register col-4">
+            <h1>CRÉER UN COMPTE</h1>
+        </div>
+        <div class="bloc-register col-10  ">
+
+            <form class="form-register">
+
+                <div class="input-register">
+                    <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
+                        <label for="registerSurname" class=" register-label">Nom</label>
+                        <input type="text" class="input-register-form " id="registerSurname" required/>
+                    </div>
+                    <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
+                        <label for="registerName" class="register-label">Prénom</label>
+                        <input type="text" class="input-register-form " id="registerName" required>
+                    </div>
+                </div>
+
+
+                <div class="input-register">
+                    <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
+                        <label for="registerPseudo" class=" register-label">Pseudo</label>
+                        <input type="text" class="input-register-form" id="registerPseudo" required>
+                    </div>
+                    <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
+                        <label for="registerBirthday" class=" register-label">Date de Naissance</label>
+                        <input type="date" class="input-register-form" id="registerBirthday" required>
+                    </div>
+                </div>
+
+
+                <div class="input-register">
+                    <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
+                        <label for="registerEmail" class=" register-label">Email</label>
+                        <input type="email" class="input-register-form" id="registerEmail" required>
+                    </div>
+                    <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
+                        <label for="loginPassword" class="register-label">Mot de passe</label>
+                        <input type="password" class="input-register-form" id="loginPassword" required>
+                    </div>
+                </div>
+                <div class="input-register-picture">
+                    <label for="registerPicture" class=" register-label"></label>
+                    <div class="col-12">
+                        <input type="file" class="input-register-form" id="registerPicture" accept=".png,.jpg,.jpeg"
+                               value="Télecharger" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 bloc-btn-form-register col-10">
+                    <button class="btn btn-primary btn-form-register col-10 col-xl-3 col-lg-5 col-sm-5" type="submit">Créer le
+                        compte
+                    </button>
+                    <a class="btn btn-danger btn-form-register col-10 col-xl-3 col-lg-5 col-sm-5" href="/"
+                       role="button">Annuler</a>
+                </div>
+            </form>
+
+
+        </div>
+    </section>
+{% endblock %}
