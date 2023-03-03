@@ -17,10 +17,10 @@ class Router
         $router = new AltoRouter();
 
         $router->map('GET', '/', [new \App\Controllers\HomePageController($twig), 'homePage']);
-        $router->map('GET', '/login', [new \App\Controllers\LoginController($twig), 'loginPage']);
+        $router->map('GET', '/login', [new \App\Controllers\UserController($twig, new UsersRepository($database) ), 'login']);
         $router->map('GET', '/register', [new \App\Controllers\RegisterControllers($twig), 'registerPage']);
-        $router->map('GET', '/posts', [new \App\Controllers\PostsController($twig, new PostsRepository($database), new CommentarysRepository($database), new UsersRepository($database)), 'postsView']);
-        $router->map('GET', '/posts/[i:id]', [new \App\Controllers\PostsController($twig, new PostsRepository($database), new CommentarysRepository($database), new UsersRepository($database)), 'postDetails']);
+        $router->map('GET', '/posts', [new \App\Controllers\PostController($twig, new PostsRepository($database), new CommentarysRepository($database), new UsersRepository($database)), 'postsView']);
+        $router->map('GET', '/posts/[i:id]', [new \App\Controllers\PostController($twig, new PostsRepository($database), new CommentarysRepository($database), new UsersRepository($database)), 'postDetails']);
 
         $match = $router->match();
 

@@ -2,18 +2,29 @@
 
 namespace App\Controllers;
 
+
+
+use App\Repository\UsersRepository;
 use Twig\Environment;
-class LoginController
+
+class UserController
 {
 
     private Environment $twig;
 
+
+
     public function __construct(Environment $twig)
     {
         $this->twig = $twig;
+
     }
-    public function loginPage(): void
+
+    public function login(): void
+
     {
         echo $this->twig->render('login.html.twig');
     }
+
+
 }

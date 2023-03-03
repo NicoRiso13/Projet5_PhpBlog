@@ -63,4 +63,21 @@ class UsersRepository
     }
 
 
+    public function getUserEmail(string $email): UsersEntity
+    {
+        $sql = ("SELECT email, password from users WHERE email=?, [$email], true");
+        $statement = $this->database->query($sql);
+        $user = $statement->fetch();
+        return new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["created_at"]), $user["email"], $user["password"],  $user["role"], new \DateTime($user["created_at"]));
+    }
+
+    public function getUserPassword(string $password): UsersEntity
+    {
+        $sql = ("SELECT email, password from users WHERE email=?, [$password], true");
+        $statement = $this->database->query($sql);
+        $user = $statement->fetch();
+        return new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["created_at"]), $user["email"], $user["password"],  $user["role"], new \DateTime($user["created_at"]));
+    }
+
+
 }

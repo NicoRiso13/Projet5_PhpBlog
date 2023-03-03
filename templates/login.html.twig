@@ -12,27 +12,30 @@
             <h1>IDENTIFIEZ-VOUS</h1>
         </div>
         <div class="bloc-login col-10 col-sm-8 col-lg-6 col-xl-4 ">
-            <form class="form-login">
+            <form class="form-login" action="login.html.twig" method="post">
                 <div class="input-login">
                     <label for="loginEmail" class=" login-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="loginEmail" placeholder="Exemple@gmail.com" required>
+                        <input type="email" class="form-control" name="loginEmail" id="loginEmail"
+                               placeholder="Exemple@gmail.com" required>
                     </div>
                 </div>
                 <div class="input-login">
                     <label for="loginPassword" class="login-label">Mot de passe</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="loginPassword" required>
+                        <input type="password" class="form-control" name="loginPassword" id="loginPassword" required>
                     </div>
                 </div>
                 <div class="form-check checked-form">
-                    <input class="form-check-input" type="checkbox" value="" id="login-checked" checked>
-                    <label class="form-check-label" for="login-checked">
+                    <input class="form-check-input" type="checkbox" id="loginCheked" checked>
+                    <label class="form-check-label" for="loginCheked">
                         Se souvenir de moi
                     </label>
                 </div>
                 <div class="mb-3 bloc-btn-form-login col-10">
-                    <button class="btn btn-primary btn-form-login col-10 col-lg-5 col-sm-5" type="submit" >Se connecter</button>
+                    <button class="btn btn-primary btn-form-login col-10 col-lg-5 col-sm-5" type="submit"
+                            name="validLogin">Se connecter
+                    </button>
                 </div>
             </form>
             <div class="bloc-link-subscribe">

@@ -5,14 +5,13 @@ namespace App\Controllers;
 use App\Repository\CommentarysRepository;
 use App\Repository\PostsRepository;
 use App\Repository\UsersRepository;
-use Exception;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
 
-class PostsController
+class PostController
 {
     private Environment $twig;
     private PostsRepository $repository;
