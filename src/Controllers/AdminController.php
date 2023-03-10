@@ -85,7 +85,6 @@ class AdminController
     {
         $postValues = $this->request->getPosts();
         $post = $this->postsRepository->update($id);
-        var_dump($post);
         echo $this->twig->render('/Admin/adminModifyPost.html.twig', ["postValues" => $postValues]);
     }
 
