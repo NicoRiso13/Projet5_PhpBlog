@@ -68,9 +68,12 @@ class PostsRepository
     /**
      * @throws Exception
      */
-    public function update(int $id): PostEntity
+    public function update(PostEntity $postEntity): void
     {
-        return [];
+        $sql = "INSERT INTO posts (title, subtitle, author, content, created_at) VALUES (?,?,?,?,?)";
+        $statement = $this->database->prepare($sql);
+        $statement->execute([$postEntity->getTitle(),$postEntity->getSubtitle(),$postEntity->getAuthor(),$postEntity->getContent(),$postEntity->getCreatedAt()->format('Y-m-d')]);
+        $postEntity->setId($this->database->lastInsertId());
     }
 
     public function delete(int $id): void
