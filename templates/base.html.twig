@@ -23,9 +23,13 @@
 
 <main class="main-content">
 
+    {% if session.user %}
+        {{ session.user.pseudo }}
+    {% endif %}
     {% block body %}
 
     {% endblock %}
+
 </main>
 
 
@@ -54,7 +58,7 @@
                     <a class="nav-link" href="/contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link link-admin" href="/admin">Administration</a>
+                    <a class="nav-link link-admin" href="/admin-manager">Administration</a>
                 </li>
 
             </ul>

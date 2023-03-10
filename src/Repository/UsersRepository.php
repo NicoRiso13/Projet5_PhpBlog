@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\UsersEntity;
+use App\Exceptions\EntityNotFoundException;
 use Exception;
 use PDO;
 
@@ -31,7 +32,7 @@ class UsersRepository
         $users = $statement->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach ($users as $user) {
-            $result[] = new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["created_at"]), $user["email"], $user["password"],  $user["role"], new \DateTime($user["created_at"]));
+            $result[] = new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["created_at"]), $user["email"], $user["password"], $user["role"], new \DateTime($user["created_at"]));
 
         }
 
@@ -47,36 +48,46 @@ class UsersRepository
         $statement = $this->database->prepare($sql);
         $statement->execute([$id]);
         $user = $statement->fetch();
-        return new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["created_at"]), $user["email"], $user["password"],  $user["role"], new \DateTime($user["created_at"]));
+        return new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["created_at"]), $user["email"], $user["password"], $user["role"], new \DateTime($user["created_at"]));
     }
 
     /**
      * @throws Exception
+     * @return array<UsersEntity>
      */
-    public function findByCommentary(string $id): UsersEntity
+    public function findByPost(string $postId): array
     {
-        $sql = ("SELECT id, surname, name, pseudo, picture, birth_date, email, password, role, created_at FROM users WHERE id=?");
+        $sql = "SELECT users.id, surname, name, pseudo, picture, birth_date, email, password, role, users.created_at FROM users JOIN commentary c on users.id = c.users_id WHERE posts_id=?";
         $statement = $this->database->prepare($sql);
-        $statement->execute([$id]);
-        $user = $statement->fetch();
-        return new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["created_at"]), $user["email"], $user["password"],  $user["role"], new \DateTime($user["created_at"]));
+        $statement->execute([$postId]);
+        $statement->rowCount();
+        if($statement->rowCount() === 0){
+            return [];
+        }
+        $result = [];
+        foreach ($statement->fetchAll() as $user){
+            $result [] = new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["birth_date"]), $user["email"], $user["password"], $user["role"], new \DateTime($user["created_at"]));
+        }
+        return $result;
+
+
+
     }
 
 
-    public function getUserEmail(string $email): UsersEntity
+    /**
+     * @throws EntityNotFoundException
+     */
+    public function findByEmailAndPassword(string $email, string $password): UsersEntity
     {
-        $sql = ("SELECT email, password from users WHERE email=?, [$email], true");
-        $statement = $this->database->query($sql);
+        $sql = ("SELECT * from users WHERE email=? and password=?");
+        $statement = $this->database->prepare($sql);
+        $statement->execute([$email, $password]);
         $user = $statement->fetch();
-        return new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["created_at"]), $user["email"], $user["password"],  $user["role"], new \DateTime($user["created_at"]));
-    }
-
-    public function getUserPassword(string $password): UsersEntity
-    {
-        $sql = ("SELECT email, password from users WHERE email=?, [$password], true");
-        $statement = $this->database->query($sql);
-        $user = $statement->fetch();
-        return new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["created_at"]), $user["email"], $user["password"],  $user["role"], new \DateTime($user["created_at"]));
+        if ($user === false) {
+            throw new EntityNotFoundException();
+        }
+        return new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["created_at"]), $user["email"], $user["password"], $user["role"], new \DateTime($user["created_at"]));
     }
 
 

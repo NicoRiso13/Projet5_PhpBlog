@@ -8,7 +8,7 @@ use DateTime;
 
 class PostEntity
 {
-    private int $id;
+    private ?int $id;
     private string $title;
     private string $subtitle;
 
@@ -16,22 +16,32 @@ class PostEntity
     private string $content;
     private DateTime $createdAt;
 
-    public function __construct(int $id, string $title, string $subtitle, string $author, string $content, DateTime $createdAt)
+    public function __construct(?int $id, string $title, string $subtitle, string $author, string $content )
     {
         $this->id = $id;
         $this->title = $title;
         $this->subtitle = $subtitle;
         $this->author = $author;
         $this->content = $content;
-        $this->createdAt = $createdAt;
+        $this->createdAt = new DateTime();
     }
+
+
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
     /**

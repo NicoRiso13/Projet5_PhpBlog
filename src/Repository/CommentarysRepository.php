@@ -18,18 +18,19 @@ class CommentarysRepository
 
     /**
      * @throws Exception
+     * @return array<CommentaryEntity>
      */
     public function findByPost(string $id): array
     {
         // Récuperation des Commentaires
 
-        $sql = ("SELECT * FROM commentary JOIN users u on commentary.users_id = u.id WHERE commentary.posts_id=?");
+        $sql = ("SELECT * FROM commentary WHERE commentary.posts_id=?");
         $statement = $this->database->prepare($sql);
         $statement->execute([$id]);
         $commentarys = $statement->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach ($commentarys as $commentary) {
-            $result[] = new CommentaryEntity($commentary["id"], $commentary["content"], new \DateTime($commentary["created_at"]), new \DateTime($commentary["refused_at"]), $commentary["reason"]);
+            $result[] = new CommentaryEntity($commentary["id"], $commentary["content"], new \DateTime($commentary["created_at"]), new \DateTime($commentary["refused_at"]), $commentary["status"],$commentary["reason"],$commentary["users_id"]);
 
         }
 

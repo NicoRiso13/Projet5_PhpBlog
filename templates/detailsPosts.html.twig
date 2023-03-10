@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '/base.html.twig' %}
 {% block title %}Details Posts{% endblock %}
 
 {% block body %}
@@ -12,8 +12,8 @@
                 <h1>{{ post.title }}</h1>
                 <h2>{{ post.subtitle }}</h2>
             </div>
-            <div class="published-at ">
-                <h3>Publié par : {{ post.author }} le {{ post.createdAt.format('d/m/Y') }}</h3>
+            <div class="published-at">
+                <h3>Publié par : {{post.author}} le {{ post.createdAt.format('d/m/Y') }}</h3>
             </div>
         </div>
         <div class="content-post-details">
@@ -35,7 +35,7 @@
         </div>
         {% for commentary in commentarys %}
             <div class="bloc-commentary">
-                <h5>Réponse publiée par : <span class="span-author">{{ users.pseudo }}</span>
+                <h5>Réponse publiée par : <span class="span-author">{{ commentary.usersEntity.pseudo }}</span>
                     le {{ commentary.createdAt.format('d/m/Y') }}</h5>
                 <h4>{{ commentary.content }} </h4>
             </div>
@@ -44,10 +44,9 @@
 
 
 
-    <section class="bloc-detail-post m-4 ">
 
 
-    </section>
+
 
 
 

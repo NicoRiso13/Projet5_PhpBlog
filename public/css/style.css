@@ -92,6 +92,161 @@ font-family: 'Montserrat', sans-serif;
 }
 
 
+/******************************* VIOLATION MESSAGE  *************************/
+
+.violation {
+    padding: 0;
+}
+
+.violation li{
+    list-style: none;
+    color:red;
+
+}
+
+/******************************* SECTION ADMIN *******************************/
+
+.section-page-posts-manager{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 25px;
+}
+.section-page-posts-manager h1{
+    margin: 50px 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/********** ADMIN MANAGER ************/
+.icon-posts-manager{
+    width: 25px;
+}
+
+.table-posts{
+    border-spacing : 2px;
+    border-collapse: separate;
+    margin-bottom: 150px;
+
+}
+.title-table-posts-manager{
+    background-color: #333;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+
+
+}
+.title-table{
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ff611f;
+    color: white;
+
+}
+.create-post-btn{
+    margin-bottom: 40px;
+}
+
+.table-posts td, th {
+    border: 1px solid #333;
+    padding: 5px;
+}
+.scope-id{
+    color: #ff611f;
+}
+
+/********** ADMIN CREATE POST ************/
+.form-create-post{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.title-create-post {
+text-align: center;
+    margin-top: 25px;
+    margin-bottom: 50px;
+
+}
+.bloc-btn-form-create-post{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    padding-bottom: 150px;
+}
+.create-post-label{
+    font-family: 'Orbitron', sans-serif;
+}
+.input-create-post{
+    margin-bottom: 10px;
+}
+
+/********** ADMIN MODIFY POST ************/
+
+
+
+
+
+
+/********** ADMIN DELETE POST ************/
+.bloc-delete-message{
+    display: flex;
+    justify-content: center;
+}
+.delete-message{
+    font-size: 1rem;
+    margin-bottom: 50px;
+    opacity: 0;
+    animation-name: deletePost;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+
+}
+.section-delete-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.section-delete-page h1{
+    margin: 50px 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+.section-delete-page p{
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+.valuePostDelete{
+    color: #ff6a00;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+.bloc-delete{
+    border-radius: 25px;
+    padding: 15px;
+    text-align: left;
+    margin: 20px 0;
+    border: 2px solid #4b4b4b;
+}
+.bloc-btn-delete{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   margin: 50px 0;
+
+}
+
+
+
+
+
+
 /******************************* SECTION HOMEPAGE *******************************/
 
 .content-home-page {
@@ -686,12 +841,13 @@ textarea {
         font-size: 1.5rem;
     }
 
-    /*
-    .bloc-footer{
-        position: absolute;
-        bottom: 0;
+    .bloc-btn-form-create-post{
+        flex-direction: column;
+        align-items: center;
     }
-    */
+    .btn-form-create-post{
+        margin-bottom: 15px;
+    }
 
 }
 
@@ -735,5 +891,15 @@ textarea {
 /************************* 386 PX **********************************/
 @media screen and (max-width: 386px) {
 
+
+}
+
+
+
+
+@keyframes deletePost {
+    0%{ opacity: 1}
+    98%{ opacity: 1}
+    100%{ opacity: 0; display: none}
 
 }

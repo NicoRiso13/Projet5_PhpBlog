@@ -174,6 +174,16 @@ private dateTime $createdAt;
         return $this->role;
     }
 
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isUser(): bool
+    {
+        return $this->role === 'user';
+    }
+
     /**
      * @param string $role
      */
