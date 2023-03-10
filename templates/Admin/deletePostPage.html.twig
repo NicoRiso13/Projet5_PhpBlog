@@ -1,0 +1,25 @@
+{% extends '/base.html.twig' %}
+{% block title %}Supprimer un post {% endblock %}
+
+
+
+{% block body %}
+    <section class="section-delete-page">
+        <h1>SUPPRIMER CE POST ?</h1>
+        <div class="bloc-delete col-5">
+            <p>Id :  <span class="valuePostDelete">{{ post.id }}</span></p>
+            <p>Titre :  <span class="valuePostDelete">{{ post.title }}</span></p>
+            <p>Sous titre :  <span class="valuePostDelete">{{ post.subtitle }}</span></p>
+            <p>Auteur :  <span class="valuePostDelete">{{ post.author }}</span></p>
+            <p>Contenu :  <span class="valuePostDelete">{{ post.content|u.truncate(100,'...') }}</span></p>
+            <p>Date de création :  <span class="valuePostDelete">{{ post.createdAt.format('d/m/Y') }}</span></p>
+        </div>
+        <div class="bloc-btn-delete col-4">
+
+            <a class="btn btn-primary" href="/delete-post/{{ post.id }}/confirmation" role="button">Valider la suppression</a>
+            <a class="btn btn-danger" href="/admin-manager" role="button">Annuler la suppression</a>
+
+        </div>
+    </section>
+
+{% endblock %}

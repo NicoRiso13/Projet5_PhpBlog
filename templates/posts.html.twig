@@ -6,31 +6,30 @@
 
 
 {% block body %}
-
+    <h1 class="titre-page-post-view">Liste des Posts</h1>
     <section class="section-posts-view">
 
-    <h1 class="titre-page-post-view">Liste des Posts</h1>
-    {% for post in posts %}
-        <section class="bloc-post m-4 ">
 
-            <div class="titre-post">
-                <h1>{{ post.title }}</h1>
-                <h5>Publié par : {{ post.author }} le {{ post.createdAt.format('d/m/Y') }}</h5>
+        {% for post in posts %}
+            <div class="bloc-post m-4 col-5">
+
+                <div class="titre-post ">
+                    <h1>{{ post.title }}</h1>
+                    <h2>{{ post.subtitle }}</h2>
+                    <h3>Publié par : {{ post.usersEntity.pseudo }}&nbsp; le {{ post.createdAt.format('d/m/Y') }}</h3>
+                </div>
+                <div class="contenu-post">
+                    <p>{{ post.content | u.truncate(70, '...') }}</p>
+                </div>
+                <div class="btn-details">
+                    <a href="/posts/{{ post.id }}">
+                        <button type="button" class="btn btn-primary btn-neon"> Voir détails</button>
+                    </a>
+                </div>
             </div>
-            <div class="soustitre-post">
-                <h3>{{ post.subtitle }}</h3>
-            </div>
+        {% endfor %}
 
-            <div class="contenu-post">
-                <p>{{ post.content }}</p>
-            </div>
-
-            <div class="btn-details">
-                <button type="button" class="btn btn-primary">Voir détails</button>
-            </div>
+    </section>
 
 
-        </section>
-
-    {% endfor %}
 {% endblock %}

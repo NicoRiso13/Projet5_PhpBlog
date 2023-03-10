@@ -11,7 +11,12 @@ class CommentaryEntity
     private string $content;
     private datetime $createdAt;
     private datetime $refusedAt;
+    private string $status;
     private string $reason;
+    private int $userId;
+    private UsersEntity $usersEntity;
+
+
 
     /**
      * @param int $id
@@ -20,13 +25,47 @@ class CommentaryEntity
      * @param DateTime $refusedAt
      * @param string $reason
      */
-    public function __construct(int $id, string $content, DateTime $createdAt, DateTime $refusedAt, string $reason)
+    public function __construct(int $id, string $content, DateTime $createdAt, DateTime $refusedAt,string $status, string $reason, int $userId)
     {
         $this->id = $id;
         $this->content = $content;
         $this->createdAt = $createdAt;
         $this->refusedAt = $refusedAt;
+        $this->status = $status;
         $this->reason = $reason;
+        $this->userId = $userId;
+    }
+
+    /**
+     * @return UsersEntity
+     */
+    public function getUsersEntity(): UsersEntity
+    {
+        return $this->usersEntity;
+    }
+
+    /**
+     * @param UsersEntity $usersEntity
+     */
+    public function setUsersEntity(UsersEntity $usersEntity): void
+    {
+        $this->usersEntity = $usersEntity;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param int $userId
+     */
+    public function setUserId(int $userId): void
+    {
+        $this->userId = $userId;
     }
 
     /**
@@ -89,6 +128,22 @@ class CommentaryEntity
     /**
      * @return string
      */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return string
+     */
     public function getReason(): string
     {
         return $this->reason;
@@ -101,6 +156,7 @@ class CommentaryEntity
     {
         $this->reason = $reason;
     }
+
 
 
 }

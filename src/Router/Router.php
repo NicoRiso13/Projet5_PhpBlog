@@ -3,19 +3,40 @@
 namespace App\Router;
 
 use AltoRouter;
+use App\Controllers\AdminController;
+use App\Controllers\PostController;
+use App\Controllers\UserController;
+use App\Repository\CommentarysRepository;
 use App\Repository\PostsRepository;
+use App\Repository\UsersRepository;
 use Twig\Environment;
 
 class Router
 {
 
-    public function routes(Environment $twig, \PDO $database): void
+    public function routes(Environment $twig, \PDO $database, Request $request): void
     {
 
         $router = new AltoRouter();
+        $postsRepository = new PostsRepository($database);
+        $postsController = new PostController($twig, $postsRepository, new CommentarysRepository($database), new UsersRepository($database));
+        $userController = new UserController($twig, $request ,new UsersRepository($database));
+        $adminController = new AdminController($twig, $request, $postsRepository);
+        $homePageController = new \App\Controllers\HomePageController($twig);
+        $registerController = new \App\Controllers\RegisterControllers($twig);
 
-        $router->map('GET', '/', [new \App\Controllers\HomePageController($twig), 'homePage']);
-        $router->map('GET', '/posts', [new \App\Controllers\PostsController($twig, new PostsRepository($database)), 'postsView']);
+
+
+        $router->map('GET', '/', [$homePageController, 'homePage']);
+        $router->map('GET|POST', '/login', [$userController, 'login']);
+        $router->map('GET', '/register', [$registerController, 'registerPage']);
+        $router->map('GET', '/posts', [$postsController, 'postsView']);
+        $router->map('GET', '/posts/[i:id]', [$postsController, 'postDetails']);
+        $router->map('GET|POST', '/create-post', [$adminController, 'createPost']);
+        $router->map('GET|POST', '/delete-post/[i:id]', [$adminController, 'deletePost']);
+        $router->map('GET|POST', '/delete-post/[i:id]/confirmation', [$adminController, 'deletePostConfirmation']);
+        $router->map('GET', '/admin-manager', [$adminController, 'adminManager']);
+        $router->map('GET|POST', '/admin-modify-post/[i:id]', [$adminController, 'modifyPost']);
 
         $match = $router->match();
 
@@ -29,6 +50,3 @@ class Router
 
     }
 }
-
-
-

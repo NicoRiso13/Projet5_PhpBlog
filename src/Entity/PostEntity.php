@@ -8,30 +8,77 @@ use DateTime;
 
 class PostEntity
 {
-    private int $id;
+    private ?int $id;
     private string $title;
     private string $subtitle;
 
     private string $author;
     private string $content;
     private DateTime $createdAt;
+    private int $userId;
 
-    public function __construct(int $id, string $title, string $subtitle, string $author, string $content, DateTime $createdAt)
+
+    private UsersEntity $usersEntity;
+
+    public function __construct(?int $id, string $title, string $subtitle, string $author, string $content, int $userId )
     {
         $this->id = $id;
         $this->title = $title;
         $this->subtitle = $subtitle;
         $this->author = $author;
         $this->content = $content;
-        $this->createdAt = $createdAt;
+        $this->createdAt = new DateTime();
+        $this->userId = $userId;
     }
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param int $userId
+     */
+    public function setUserId(int $userId): void
+    {
+        $this->userId = $userId;
+    }
+
+    /**
+     * @return UsersEntity
+     */
+    public function getUsersEntity(): UsersEntity
+    {
+        return $this->usersEntity;
+    }
+
+    /**
+     * @param UsersEntity $usersEntity
+     */
+    public function setUsersEntity(UsersEntity $usersEntity): void
+    {
+        $this->usersEntity = $usersEntity;
+    }
+
+
+
+    /**
+     * @return int
+     */
+    public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
     /**
