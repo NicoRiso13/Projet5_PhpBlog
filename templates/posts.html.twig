@@ -16,7 +16,7 @@
                 <div class="titre-post ">
                     <h1>{{ post.title }}</h1>
                     <h2>{{ post.subtitle }}</h2>
-                    <h3>Publié par : {{ user.id }} le {{ post.createdAt.format('d/m/Y') }}</h3>
+                    <h3>Publié par : {{ post.usersEntity.pseudo }}&nbsp; le {{ post.createdAt.format('d/m/Y') }}</h3>
                 </div>
                 <div class="contenu-post">
                     <p>{{ post.content | u.truncate(70, '...') }}</p>

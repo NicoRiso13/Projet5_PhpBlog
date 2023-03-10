@@ -15,8 +15,12 @@ class PostEntity
     private string $author;
     private string $content;
     private DateTime $createdAt;
+    private int $userId;
 
-    public function __construct(?int $id, string $title, string $subtitle, string $author, string $content )
+
+    private UsersEntity $usersEntity;
+
+    public function __construct(?int $id, string $title, string $subtitle, string $author, string $content, int $userId )
     {
         $this->id = $id;
         $this->title = $title;
@@ -24,6 +28,39 @@ class PostEntity
         $this->author = $author;
         $this->content = $content;
         $this->createdAt = new DateTime();
+        $this->userId = $userId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param int $userId
+     */
+    public function setUserId(int $userId): void
+    {
+        $this->userId = $userId;
+    }
+
+    /**
+     * @return UsersEntity
+     */
+    public function getUsersEntity(): UsersEntity
+    {
+        return $this->usersEntity;
+    }
+
+    /**
+     * @param UsersEntity $usersEntity
+     */
+    public function setUsersEntity(UsersEntity $usersEntity): void
+    {
+        $this->usersEntity = $usersEntity;
     }
 
 

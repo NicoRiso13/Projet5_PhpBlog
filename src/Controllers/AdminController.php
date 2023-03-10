@@ -58,7 +58,7 @@ class AdminController
         $violations = $validator->postValidate($postValues);
         if(count($violations) === 0) {
             try {
-                $postEntity = new PostEntity(null, $postValues['title'], $postValues['subtitle'], $postValues['author'], $postValues['content']);
+                $postEntity = new PostEntity(null, $postValues['title'], $postValues['subtitle'], $postValues['author'], $postValues['content'], $postValues['usersId']);
                 $this->postsRepository->save($postEntity);
                 $this->request->getSession()->addMessage('Post créé avec succés !');
                 header('location: /admin-manager');
@@ -81,7 +81,7 @@ class AdminController
      * @throws Exception
      */
 
-    public function modifyPost(string $id): void
+    public function modifyPost(int $id): void
     {
         $postValues = $this->request->getPosts();
         $post = $this->postsRepository->update($id);
@@ -93,14 +93,14 @@ class AdminController
      * @throws RuntimeError
      * @throws LoaderError
      */
-    public function deletePost(string $id): void
+    public function deletePost(int $id): void
     {
         $post = $this->postsRepository->findOneById($id);
         echo $this->twig->render('/Admin/deletePostPage.html.twig', ["post" => $post]);
 
     }
 
-    public function deletePostConfirmation(string $id): void
+    public function deletePostConfirmation(int $id): void
     {
         $this->postsRepository->delete($id);
         $this->request->getSession()->addMessage('Post'.' '.$id.' '.'supprimé avec succés');

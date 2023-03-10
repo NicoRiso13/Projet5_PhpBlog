@@ -31,13 +31,13 @@ class PostsRepository
     /**
      * @throws Exception
      */
-    public function findOneById(string $id): PostEntity
+    public function findOneById(int $id): PostEntity
     {
-        $sql = ("SELECT id, title, subtitle, author, content, created_at FROM posts WHERE id=?");
+        $sql = ("SELECT * FROM posts WHERE id=?");
         $statement = $this->database->prepare($sql);
         $statement->execute([$id]);
         $post = $statement->fetch();
-        return new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"], new \DateTime($post["created_at"]));
+        return new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"], $post['users_id']);
     }
 
     /**
@@ -54,6 +54,7 @@ class PostsRepository
 
     /**
      * @throws Exception
+     * @return array<PostEntity>
      */
     public function read(): array
     {
@@ -67,18 +68,12 @@ class PostsRepository
     /**
      * @throws Exception
      */
-    public function update(string $id): PostEntity
+    public function update(int $id): PostEntity
     {
-        $sql = ("UPDATE posts SET  title=:title ,subtitle=:subtitle, author=:author, content=:content, created_at=:created_at WHERE id=:id");
-        $statement = $this->database->query($sql);
-        $statement->execute([$id]);
-
-
-        return new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"], new \DateTime($post["created_at"]));
-
+        return [];
     }
 
-    public function delete(string $id): void
+    public function delete(int $id): void
     {
         $sql = "DELETE FROM posts WHERE id=?";
         $statement = $this->database->prepare($sql);
@@ -88,7 +83,7 @@ class PostsRepository
 
     /**
      * @param string $sql
-     * @return array
+     * @return array<PostEntity>
      * @throws Exception
      */
     public function extracted(string $sql): array
@@ -97,7 +92,7 @@ class PostsRepository
         $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach ($posts as $post) {
-            $result[] = new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"], new \DateTime($post["created_at"]));
+            $result[] = new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"], $post['users_id']);
         }
         return $result;
     }

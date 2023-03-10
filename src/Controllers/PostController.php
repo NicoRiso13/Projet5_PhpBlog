@@ -32,6 +32,10 @@ class PostController
     public function postsView(): void
     {
         $posts = $this->postsRepository->findAll();
+        foreach ($posts as $post){
+            $user = $this->usersRepository->findOneById($post->getUserId());
+            $post->setUsersEntity($user);
+        }
         echo $this->twig->render('posts.html.twig', ["posts" => $posts]);
     }
 
