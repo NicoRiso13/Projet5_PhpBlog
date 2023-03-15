@@ -10,31 +10,36 @@ class CommentaryEntity
     private int $id;
     private string $content;
     private datetime $createdAt;
-    private datetime $refusedAt;
+    private ?datetime $refusedAt;
     private string $status;
-    private string $reason;
+    private ?string $reason;
     private int $userId;
+    private int $postId;
     private UsersEntity $usersEntity;
 
 
-
     /**
-     * @param int $id
+     * @param ?int $id
      * @param string $content
-     * @param DateTime $createdAt
-     * @param DateTime $refusedAt
-     * @param string $reason
+     * @param DateTime|null $refusedAt
+     * @param string $status
+     * @param string|null $reason
+     * @param int $userId
+     * @param int $postId
      */
-    public function __construct(int $id, string $content, DateTime $createdAt, DateTime $refusedAt,string $status, string $reason, int $userId)
+    public function __construct(?int $id, string $content, ?DateTime $refusedAt, string $status, ?string $reason, int $userId, int $postId)
     {
         $this->id = $id;
         $this->content = $content;
-        $this->createdAt = $createdAt;
+        $this->createdAt = new DateTime();
         $this->refusedAt = $refusedAt;
         $this->status = $status;
         $this->reason = $reason;
         $this->userId = $userId;
+        $this->postId = $postId;
     }
+
+
 
     /**
      * @return UsersEntity
@@ -71,9 +76,33 @@ class CommentaryEntity
     /**
      * @return int
      */
-    public function getId(): int
+    public function getPostId(): int
+    {
+        return $this->postId;
+    }
+
+    /**
+     * @param int $postId
+     */
+    public function setPostId(int $postId): void
+    {
+        $this->postId = $postId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
 
@@ -112,7 +141,7 @@ class CommentaryEntity
     /**
      * @return DateTime
      */
-    public function getRefusedAt(): DateTime
+    public function getRefusedAt(): ?DateTime
     {
         return $this->refusedAt;
     }
@@ -144,7 +173,7 @@ class CommentaryEntity
     /**
      * @return string
      */
-    public function getReason(): string
+    public function getReason(): ?string
     {
         return $this->reason;
     }
@@ -156,6 +185,7 @@ class CommentaryEntity
     {
         $this->reason = $reason;
     }
+
 
 
 

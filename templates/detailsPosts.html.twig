@@ -24,15 +24,31 @@
 
     <div class="bloc-post-commentarys col-9">
         <h6>Espace commentaires</h6>
+        {% if session.user %}
         <div class="bloc-form-commentary col-12">
-            <form class="commentary-form" method="post" action="">
-                <label class="label-commentary" for="inputCommentary">Ajoutez votre commentaire</label>
-                <textarea class="col-12" name="inputCommentary" id="inputCommentary" rows="5"></textarea>
+            <form class="commentary-form" method="post" action="/add-commentary">
+                <label class="label-commentary" for="comment">Ajoutez votre commentaire</label>
+                <textarea class="col-12" name="comment" id="comment" rows="5"></textarea>
+                <div hidden="hidden">
+                    <label for="userId" class="register-label"></label>
+                    <input type="text" class="input-register-form" name="userId" id="userId" value="{{ user.id }}">
+                </div>
+                <div hidden="hidden">
+                    <label for="postId" class="register-label"></label>
+                    <input type="text" class="input-register-form" name="postId" id="postId" value="{{ post.id }}">
+                </div>
                 <div class="mb-3">
-                    <button class="btn btn-primary" type="submit" name="addCommentary" >Valider</button>
+                    <button class="btn btn-primary" type="submit"  >Valider</button>
                 </div>
             </form>
         </div>
+        {% endif %}
+        {% if not session.user %}
+             <div class="section-message-connect-commentary">
+                 <p class="message-connect-commentary"> Pour laisser un commentaire veuillez vous <a href="/login">identifier</a> ou <a href="/register">créer un compte </a> !!</p>
+             </div>
+        {% endif %}
+
         {% for commentary in commentarys %}
             <div class="bloc-commentary">
                 <h5>Réponse publiée par : <span class="span-author">{{ commentary.usersEntity.pseudo }}</span>

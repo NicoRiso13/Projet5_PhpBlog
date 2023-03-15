@@ -20,7 +20,7 @@
             <table class="table-posts">
                 <thead class="title-table-posts-manager">
                 <tr>
-                    <th colspan="5">Détails des Posts</th>
+                    <th colspan="6">Détails des Posts</th>
                 </tr>
                 </thead>
                 <tr>
@@ -28,7 +28,7 @@
                     <td class="col-2 title-table"> Titre</td>
                     <td class="col-2 title-table"> Sous titre</td>
                     <td class="col-2 title-table"> Auteur</td>
-                    <td class="col-6 title-table"> contenu</td>
+                    <td class="col-4 title-table"> contenu</td>
                     <td class="col-1 title-table"> Date de création</td>
                 </tr>
                 {% for post in posts %}
@@ -40,7 +40,7 @@
                     <td>{{ post.content | u.truncate(150, '...') | capitalize }}</td>
                     <td>{{ post.createdAt.format('d/m/Y') }}</td>
                     <td> <a href="/posts/{{ post.id }}" ><img class="icon-posts-manager" src="/img/icons/iconRead.png" alt="Voir Posts"></a></td>
-                    <td> <a href="/admin-modify-post/{{ post.id }}" ><img class="icon-posts-manager" src="/img/icons/iconModify.png" alt="Voir Posts"></a></td>
+                    <td> <a href="/update-post/{{ post.id }}" ><img class="icon-posts-manager" src="/img/icons/iconModify.png" alt="Voir Posts"></a></td>
                     <td> <a href="/delete-post/{{ post.id }}" ><img class="icon-posts-manager" src="/img/icons/iconDelete.png" alt="Voir Posts"></a></td>
                 </tr>
 

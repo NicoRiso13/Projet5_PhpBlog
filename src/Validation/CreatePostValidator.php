@@ -6,7 +6,7 @@ class CreatePostValidator
 
 {
 
-    public function postValidate(array $postValues): array
+    public function postValidator(array $postValues): array
     {
         $createPostViolations = array();
 
@@ -22,6 +22,9 @@ class CreatePostValidator
         }
         if (empty($postValues['author'])) {
             $createPostViolations ['author'] [] = "Veuillez rédiger un contenu";
+        }
+        if (empty($postValues['userId'])) {
+            $createPostViolations ['userId'] [] = "Veuillez rédiger un contenu";
         }
 
         if(!empty($postValues['title']) && strlen($postValues['title']) >255 ){

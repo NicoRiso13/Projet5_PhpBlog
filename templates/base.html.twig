@@ -23,9 +23,7 @@
 
 <main class="main-content">
 
-    {% if session.user %}
-        {{ session.user.pseudo }}
-    {% endif %}
+
     {% block body %}
 
     {% endblock %}
@@ -44,13 +42,21 @@
                                                                 src="/img/twitter.svg"></a>
         </div>
         <div class=" link-footer ">
+
             <ul>
+                {% if session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link logout" href="/logout">Se déconnecter</a>
+                    </li>
+                {% endif %}
                 <li>
                     <a class="nav-link active" href="/">Accueil</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Se connecter/S'inscrire</a>
-                </li>
+                {% if not session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Se connecter/S'inscrire</a>
+                    </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="/posts">Les Posts</a>
                 </li>
@@ -60,7 +66,9 @@
                 <li class="nav-item">
                     <a class="nav-link link-admin" href="/admin-manager">Administration</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link " href="#">▲ Haut de page ▲</a>
+                </li>
             </ul>
         </div>
         <p class="copyright"> &copy; Le Blog d'Actarus | 2022-2023</p>

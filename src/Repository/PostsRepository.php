@@ -38,19 +38,8 @@ class PostsRepository
         $statement->execute([$id]);
         $post = $statement->fetch();
         return new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"], $post['users_id']);
-    }
 
-    /**
-     * @throws Exception
-     */
-    public function save(PostEntity $postEntity): void
-    {
-        $sql = "INSERT INTO posts (title, subtitle, author, content, created_at) VALUES (?,?,?,?,?)";
-        $statement = $this->database->prepare($sql);
-        $statement->execute([$postEntity->getTitle(),$postEntity->getSubtitle(),$postEntity->getAuthor(),$postEntity->getContent(),$postEntity->getCreatedAt()->format('Y-m-d')]);
-        $postEntity->setId($this->database->lastInsertId());
     }
-
 
     /**
      * @throws Exception
@@ -64,15 +53,27 @@ class PostsRepository
         return $this->extracted($sql);
     }
 
+    /**
+     * @throws Exception
+     */
+    public function save(PostEntity $postEntity): void
+    {
+        $sql = "INSERT INTO posts (users_id, title, subtitle, author, content, created_at) VALUES (?,?,?,?,?,?)";
+        $statement = $this->database->prepare($sql);
+        $statement->execute([$postEntity->getUserId(), $postEntity->getTitle(),$postEntity->getSubtitle(),$postEntity->getAuthor(),$postEntity->getContent(),$postEntity->getCreatedAt()->format('Y-m-d')]);
+        $postEntity->setId($this->database->lastInsertId());
+    }
+
+
 
     /**
      * @throws Exception
      */
     public function update(PostEntity $postEntity): void
     {
-        $sql = "INSERT INTO posts (title, subtitle, author, content, created_at) VALUES (?,?,?,?,?)";
+        $sql = ("UPDATE `posts` SET `users_id`=?,`title`=?,`subtitle`=?,`author`=?,`content`=? WHERE id=?");
         $statement = $this->database->prepare($sql);
-        $statement->execute([$postEntity->getTitle(),$postEntity->getSubtitle(),$postEntity->getAuthor(),$postEntity->getContent(),$postEntity->getCreatedAt()->format('Y-m-d')]);
+        $statement->execute([$postEntity->getUserId(), $postEntity->getTitle(),$postEntity->getSubtitle(),$postEntity->getAuthor(),$postEntity->getContent(),$postEntity->getCreatedAt()->format('Y-m-d')]);
         $postEntity->setId($this->database->lastInsertId());
     }
 

@@ -19,10 +19,10 @@ class UserLoginValidator
             $violations ['loginPassword'] [] = "Trop de carctères saisies";
         }
         if (empty($values['loginEmail'])) {
-            $violations ['loginEmail'] [] = "Cette valeur ne doit pas être vide";
+            $violations ['loginEmail'] [] = "Veuillez saisir un email";
         }
         if (empty($values['loginPassword'])) {
-            $violations ['loginPassword'] [] = "Cette valeur ne doit pas être vide";
+            $violations ['loginPassword'] [] = "Veuillez saisir un mot de passe";
         }
 
         return $violations;

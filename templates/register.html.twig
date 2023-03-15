@@ -11,55 +11,100 @@
         <div class="title-register col-4">
             <h1>CRÉER UN COMPTE</h1>
         </div>
-        <div class="bloc-register col-10  ">
+        <div class="bloc-register col-10">
 
-            <form class="form-register">
-
-                <div class="input-register">
-                    <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
-                        <label for="registerSurname" class=" register-label">Nom</label>
-                        <input type="text" class="input-register-form " id="registerSurname" required/>
-                    </div>
-                    <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
-                        <label for="registerName" class="register-label">Prénom</label>
-                        <input type="text" class="input-register-form " id="registerName" required>
-                    </div>
-                </div>
+            <form class="form-register" action="/register" method="post">
 
 
                 <div class="input-register">
                     <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
-                        <label for="registerPseudo" class=" register-label">Pseudo</label>
-                        <input type="text" class="input-register-form" id="registerPseudo" required>
+                        <label for="surname" class=" register-label">Nom</label>
+                        <input type="text" class="input-register-form " name="surname" id="surname" value="{{ user.surname }}"
+                               required/>
+                        {% if registerViolations.surname is not empty %}
+                            <ul class="violation">
+                                {% for registerViolations in registerViolations.surname %}
+                                    <li>{{ registerViolations }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
+
                     <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
-                        <label for="registerBirthday" class=" register-label">Date de Naissance</label>
-                        <input type="date" class="input-register-form" id="registerBirthday" required>
+                        <label for="name" class="register-label">Prénom</label>
+                        <input type="text" class="input-register-form " name="name" id="name" value="{{ user.name }}" required/>
+                        {% if registerViolations.name is not empty %}
+                            <ul class="violation">
+                                {% for registerViolations in registerViolations.name %}
+                                    <li>{{ registerViolations }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
                 </div>
 
 
                 <div class="input-register">
                     <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
-                        <label for="registerEmail" class=" register-label">Email</label>
-                        <input type="email" class="input-register-form" id="registerEmail" required>
+                        <label for="pseudo" class=" register-label">Pseudo</label>
+                        <input type="text" class="input-register-form" name="pseudo" id="pseudo" value="{{ user.pseudo }}" required>
+                        {% if registerViolations.pseudo is not empty %}
+                            <ul class="violation">
+                                {% for registerViolations in registerViolations.pseudo %}
+                                    <li>{{ registerViolations }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
                     <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
-                        <label for="registerPassword" class="register-label">Mot de passe</label>
-                        <input type="password" class="input-register-form" id="registerPassword" required>
+                        <label for="birthDate" class=" register-label">Date de Naissance</label>
+                        <input type="date" class="input-register-form" name="birthDate" id="birthDate" value="{{ user.birthDate }}" required>
+                        {% if registerViolations.birthday is not empty %}
+                            <ul class="violation">
+                                {% for registerViolations in registerViolations.birthday %}
+                                    <li>{{ registerViolations }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
                 </div>
-                <div class="input-register-picture">
-                    <label for="registerPicture" class=" register-label"></label>
-                    <div class="col-12">
-                        <input type="file" class="input-register-form" id="registerPicture" accept=".png,.jpg,.jpeg"
-                               value="Télecharger" required>
+
+
+                <div class="input-register">
+                    <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
+                        <label for="email" class=" register-label">Email</label>
+                        <input type="email" class="input-register-form" name="email" id="email" value="{{ user.email }}" required>
+                        {% if registerViolations.email is not empty %}
+                            <ul class="violation">
+                                {% for registerViolations in registerViolations.email %}
+                                    <li>{{ registerViolations }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
+                    <div class="col-10 col-xl-5 col-lg-5 col-sm-8">
+                        <label for="password" class="register-label">Mot de passe</label>
+                        <input type="password" class="input-register-form" name="password" id="password" value="{{ user.password }}"
+                               required>
+                        {% if registerViolations.password is not empty %}
+                            <ul class="violation">
+                                {% for registerViolations in registerViolations.password %}
+                                    <li>{{ registerViolations }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <div class="input-register">
+                        <div class="col-10 col-xl-5 col-lg-5 col-sm-8" hidden="hidden">
+                            <label for="role" class=" register-label"></label>
+                            <input type="text" class="input-register-form" name="role" id="role" value="user">
+                        </div>
                 </div>
+
 
                 <div class="mb-3 bloc-btn-form-register col-10">
-                    <button class="btn btn-primary btn-form-register col-10 col-xl-3 col-lg-5 col-sm-5" type="submit" name="addUser">Créer le
-                        compte
+                    <button class="btn btn-primary btn-form-register col-10 col-xl-3 col-lg-5 col-sm-5" type="submit"
+                            >Créer le compte
                     </button>
                     <a class="btn btn-danger btn-form-register col-10 col-xl-3 col-lg-5 col-sm-5" href="/"
                        role="button">Annuler</a>

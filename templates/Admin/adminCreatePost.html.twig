@@ -19,31 +19,40 @@
                     <div >
                         <input type="text" class="form-control" name="title" id="title" value="{{ post.title}}" >
                     </div>
+                    {% if createPostViolations.title is not empty %}
+                        <ul class="violation">
+                            {% for createPostViolations in createPostViolations.title %}
+                                <li>{{ createPostViolations }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
-                {% if createPostViolations.title is not empty %}
-                    <ul class="violation">
-                        {% for createPostViolations in createPostViolations.title %}
-                            <li>{{ createPostViolations }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
+
                 <div class="input-create-post col-10">
                     <label for="subtitle" class=" create-post-label">Sous titre</label>
                     <div >
                         <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ post.subtitle}}" >
                     </div>
+                    {% if createPostViolations.subtitle is not empty %}
+                        <ul class="violation">
+                            {% for createPostViolations in createPostViolations.subtitle %}
+                                <li>{{ createPostViolations }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
-                {% if createPostViolations.subtitle is not empty %}
-                    <ul class="violation">
-                        {% for createPostViolations in createPostViolations.subtitle %}
-                            <li>{{ createPostViolations }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-                <div class="input-create-post col-10" >
-                    <label for="author" class=" create-post-label">Auteur</label>
+
+
+                <div class="input-create-post col-10" hidden="hidden">
+                    <label for="userId" class=" create-post-label"></label>
                     <div>
-                        <input type="text" class="form-control" name="author" id="author" value="Actarus"  >
+                        <input type="number" class="form-control col-10" name="userId" id="userId" value="11">
+                    </div>
+                </div>
+                <div class="input-create-post col-10" hidden="hidden">
+                    <label for="author" class=" create-post-label"></label>
+                    <div>
+                        <input type="text" class="form-control" name="author" id="author" value="Actarus">
                     </div>
                 </div>
                 <div class="input-create-post col-10">
@@ -51,14 +60,15 @@
                     <div>
                         <textarea type="text" class="form-control" name="content" id="content" rows="5" >{{ post.content }}</textarea>
                     </div>
+                    {% if createPostViolations.content is not empty %}
+                        <ul class="violation">
+                            {% for createPostViolations in createPostViolations.content %}
+                                <li>{{ createPostViolations }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
-                {% if createPostViolations.content is not empty %}
-                    <ul class="violation">
-                        {% for createPostViolations in createPostViolations.content %}
-                            <li>{{ createPostViolations }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
+
 
 
 

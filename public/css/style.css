@@ -22,7 +22,50 @@ font-family: 'Sarpanch', sans-serif;
 font-family: 'Montserrat', sans-serif;
 
 */
+.bloc-link {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
 
+.icon-Connect {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    animation-name: icon-connect;
+    animation-duration: 2s;
+    opacity: 0;
+    animation-iteration-count: infinite;
+    transition: ease-in-out;
+}
+
+.bloc-connected {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.bloc-connected a {
+    text-decoration: none;
+    font-size: 0.5rem;
+}
+
+.connected {
+    display: flex;
+    color: white;
+    margin: 0;
+    padding-right: 8px;
+
+}
+
+.connected-pseudo {
+    color: #ff6a00;
+    font-weight: bold;
+    margin: 0 5px 0 0;
+}
 
 .body-contain {
     margin: 0;
@@ -98,21 +141,22 @@ font-family: 'Montserrat', sans-serif;
     padding: 0;
 }
 
-.violation li{
+.violation li {
     list-style: none;
-    color:red;
+    color: red;
 
 }
 
 /******************************* SECTION ADMIN *******************************/
 
-.section-page-posts-manager{
+.section-page-posts-manager {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 25px;
 }
-.section-page-posts-manager h1{
+
+.section-page-posts-manager h1 {
     margin: 50px 0;
     font-size: 2.5rem;
     font-weight: bold;
@@ -120,17 +164,18 @@ font-family: 'Montserrat', sans-serif;
 }
 
 /********** ADMIN MANAGER ************/
-.icon-posts-manager{
+.icon-posts-manager {
     width: 25px;
 }
 
-.table-posts{
-    border-spacing : 2px;
+.table-posts {
+    border-spacing: 2px;
     border-collapse: separate;
     margin-bottom: 150px;
 
 }
-.title-table-posts-manager{
+
+.title-table-posts-manager {
     background-color: #333;
     color: #fff;
     font-size: 1.5rem;
@@ -138,7 +183,8 @@ font-family: 'Montserrat', sans-serif;
 
 
 }
-.title-table{
+
+.title-table {
     font-size: 1rem;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
@@ -146,7 +192,8 @@ font-family: 'Montserrat', sans-serif;
     color: white;
 
 }
-.create-post-btn{
+
+.create-post-btn {
     margin-bottom: 40px;
 }
 
@@ -154,50 +201,94 @@ font-family: 'Montserrat', sans-serif;
     border: 1px solid #333;
     padding: 5px;
 }
-.scope-id{
+
+.scope-id {
     color: #ff611f;
 }
 
 /********** ADMIN CREATE POST ************/
-.form-create-post{
+.form-create-post {
     display: flex;
     flex-direction: column;
     align-items: center;
 
 }
+
 .title-create-post {
-text-align: center;
+    text-align: center;
     margin-top: 25px;
     margin-bottom: 50px;
 
 }
-.bloc-btn-form-create-post{
+.title-create-post h1{
+    margin: 50px 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bloc-btn-form-create-post {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 50px;
     padding-bottom: 150px;
 }
-.create-post-label{
+
+.create-post-label {
     font-family: 'Orbitron', sans-serif;
 }
-.input-create-post{
+
+.input-create-post {
     margin-bottom: 10px;
 }
 
-/********** ADMIN MODIFY POST ************/
+/********** ADMIN UPDATE POST ************/
 
+.postId {
 
+    color: #ff6a00;
+    font-weight: bold;
+}
 
+.form-update-post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+}
+
+.title-update-post {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 50px;
+
+}
+
+.bloc-btn-form-update-post {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    padding-bottom: 150px;
+}
+
+.update-post-label {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.input-update-post {
+    margin-bottom: 10px;
+}
 
 
 /********** ADMIN DELETE POST ************/
-.bloc-delete-message{
+.bloc-delete-message {
     display: flex;
     justify-content: center;
 }
-.delete-message{
+
+.delete-message {
     font-size: 1rem;
     margin-bottom: 50px;
     opacity: 0;
@@ -206,45 +297,47 @@ text-align: center;
     animation-iteration-count: 1;
 
 }
-.section-delete-page{
+
+.section-delete-page {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.section-delete-page h1{
+
+.section-delete-page h1 {
     margin: 50px 0;
     font-size: 2.5rem;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
 }
-.section-delete-page p{
+
+.section-delete-page p {
     font-size: 1.5rem;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
 }
-.valuePostDelete{
+
+.valuePostDelete {
     color: #ff6a00;
     font-size: 1.5rem;
     font-weight: normal;
 }
-.bloc-delete{
+
+.bloc-delete {
     border-radius: 25px;
     padding: 15px;
     text-align: left;
     margin: 20px 0;
     border: 2px solid #4b4b4b;
 }
-.bloc-btn-delete{
+
+.bloc-btn-delete {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-   margin: 50px 0;
+    margin: 50px 0;
 
 }
-
-
-
-
 
 
 /******************************* SECTION HOMEPAGE *******************************/
@@ -292,7 +385,7 @@ text-align: center;
 }
 
 /******************************* SECTION LOGIN *******************************/
-.section-Login {
+.section-login {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -330,13 +423,13 @@ text-align: center;
     width: 100%;
 }
 
-.login-label {
+.login-login {
     text-align: center;
     font-family: 'Orbitron', sans-serif;
     width: 100%;
 }
 
-.checked-form {
+.checked-login {
     margin-top: 5px;
 }
 
@@ -361,20 +454,6 @@ text-align: center;
     transition: 0.5s;
     padding: -12px;
     width: 45%;
-}
-
-.bloc-link-subscribe {
-    margin-top: 50px;
-    text-align: center;
-}
-
-.bloc-link-subscribe a {
-    text-decoration: none;
-}
-
-.bloc-link-subscribe a:hover {
-    color: #ff6a00;
-    transition: 0.3s;
 }
 
 
@@ -476,6 +555,81 @@ text-align: center;
     color: #ff6a00;
     transition: 0.3s;
 }
+
+/******************************************* SECTION CONTACT **************************************/
+.section-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-contact {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: #ff6a00;
+    width: 100%;
+}
+
+.bloc-contact {
+    margin-bottom: 100px;
+}
+
+.form-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 30px;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+
+.input-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.contact-label {
+    display: block;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    width: 100%;
+}
+
+.checked-form {
+    margin-top: 5px;
+}
+
+.bloc-btn-form-contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 80px;
+}
+
+.btn-form-contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.btn-form-contact:hover {
+    background-color: #0c0c0c;
+    border-color: #0c0c0c;
+    color: white;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 10px #FFF, 0 0 12px #0366f8, 0 0 15px #0366f8, 0 0 22px #0366f8, 0 0 35px #0366f8, 0 0 50px #0366f8, 2px 2px 2px rgba(11, 134, 224, 0);
+    transition: 0.5s;
+    padding: -12px;
+    width: 45%;
+}
+
+
 
 /******************************* SECTION POSTS VIEW *******************************/
 
@@ -702,6 +856,26 @@ textarea {
     word-break: break-all;
 }
 
+.section-message-connect-commentary {
+    margin: 70px 0;
+}
+
+.message-connect-commentary {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.message-connect-commentary a {
+    text-decoration: none;
+    color: #ff6a00;
+    opacity: 0.5;
+}
+
+.message-connect-commentary a:hover {
+    opacity: initial;
+    transition-duration: 0.2s;
+
+}
+
 
 /********************************** SECTION FOOTER *******************************/
 
@@ -769,8 +943,12 @@ textarea {
 ********************************* MEDIA QUERIES *********************************
 *******************************************************************************/
 
-/************************* 1227 PX **********************************/
-@media screen and (max-width: 1227px) {
+/************************* 1300 PX **********************************/
+@media screen and (max-width: 1300px) {
+
+    .bloc-link {
+        align-items: center;
+    }
 
     .bloc-nav {
         flex-direction: column;
@@ -803,11 +981,24 @@ textarea {
 
 /************************* 992 PX **********************************/
 @media screen and (max-width: 992px) {
+    .bloc-connected {
+        margin-bottom: 10px;
+    }
+
+    .connected {
+        align-items: center;
+        font-size: 0.7rem;
+    }
+
+    .connected-pseudo {
+        font-size: 0.7rem;
+    }
 
     .input-register {
-       justify-content: center;
+        justify-content: center;
     }
-    .input-register-picture{
+
+    .input-register-picture {
         width: 60%;
     }
 }
@@ -841,11 +1032,12 @@ textarea {
         font-size: 1.5rem;
     }
 
-    .bloc-btn-form-create-post{
+    .bloc-btn-form-create-post {
         flex-direction: column;
         align-items: center;
     }
-    .btn-form-create-post{
+
+    .btn-form-create-post {
         margin-bottom: 15px;
     }
 
@@ -867,7 +1059,7 @@ textarea {
         font-size: 0.6rem;
     }
 
-    .bloc-btn-form-login,.bloc-btn-form-register {
+    .bloc-btn-form-login, .bloc-btn-form-register {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -876,14 +1068,22 @@ textarea {
     .btn-form-login, .btn-form-register {
         margin-top: 15px;
     }
+
     .input-register {
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
 
     }
-    .input-register-form{
+
+    .input-register-form {
         width: 100%;
+    }
+    .title-contact{
+        margin-bottom: 20px;
+    }
+    .bloc-btn-form-create-post{
+        padding-bottom: 30px;
     }
 
 }
@@ -895,11 +1095,32 @@ textarea {
 }
 
 
-
-
 @keyframes deletePost {
-    0%{ opacity: 1}
-    98%{ opacity: 1}
-    100%{ opacity: 0; display: none}
+    0% {
+        opacity: 1
+    }
+    98% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0;
+        display: none
+    }
+
+}
+
+
+/************************************************ @KEYFRAME ********************************************************/
+
+@keyframes icon-connect {
+    0% {
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 
 }

@@ -7,7 +7,7 @@
 
 
 
-    <section class="section-Login">
+    <section class="section-login">
         <div class="title-login col-4">
             <h1>IDENTIFIEZ-VOUS</h1>
         </div>
@@ -25,27 +25,29 @@
                     <div class="col-sm-10">
                         <input type="email" class="form-control" name="loginEmail" id="loginEmail"
                                value="{{ values.loginEmail }}" placeholder="Exemple@gmail.com" >
+                        {% if violations.loginEmail is not empty %}
+                            <ul class="violation">
+                                {% for violation in violations.loginEmail %}
+                                    <li>{{ violation }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
-                    {% if violations.loginEmail is not empty %}
-                        <ul class="violation">
-                        {% for violation in violations.loginEmail %}
-                            <li>{{ violation }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
+
                 </div>
                 <div class="input-login">
                     <label for="loginPassword" class="login-label">Mot de passe</label>
                     <div class="col-sm-10">
                         <input type="password" class="form-control" name="loginPassword" id="loginPassword" value="{{ values.loginPassword }}" >
+                        {% if violations.loginPassword is not empty %}
+                            <ul class="violation">
+                                {% for violation in violations.loginPassword %}
+                                    <li>{{ violation }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
-                    {% if violations.loginPassword is not empty %}
-                        <ul class="violation">
-                            {% for violation in violations.loginPassword %}
-                                <li>{{ violation }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
+
                 </div>
 
                 <div class="form-check checked-form">

@@ -32,7 +32,7 @@ class UsersRepository
         $users = $statement->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach ($users as $user) {
-            $result[] = new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["created_at"]), $user["email"], $user["password"], $user["role"], new \DateTime($user["created_at"]));
+            $result[] = new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], ($user["birthDate"]), $user["email"], $user["password"], $user["role"], new \DateTime($user["created_at"]));
 
         }
 
@@ -42,41 +42,19 @@ class UsersRepository
     /**
      * @throws Exception
      */
-    public function findOneById(string $id): UsersEntity
+    public function findOneById(int $id): UsersEntity
     {
-        $sql = ("SELECT id, surname, name, pseudo, picture, birth_date, email, password, role, created_at FROM users WHERE id=?");
+        $sql = ("SELECT id, surname, name, pseudo, birth_date, email, password, role, created_at FROM users WHERE id=?");
         $statement = $this->database->prepare($sql);
         $statement->execute([$id]);
         $user = $statement->fetch();
-        return new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["created_at"]), $user["email"], $user["password"], $user["role"], new \DateTime($user["created_at"]));
-    }
-
-    /**
-     * @throws Exception
-     * @return array<UsersEntity>
-     */
-    public function findByPost(string $postId): array
-    {
-        $sql = "SELECT users.id, surname, name, pseudo, picture, birth_date, email, password, role, users.created_at FROM users JOIN commentary c on users.id = c.users_id WHERE posts_id=?";
-        $statement = $this->database->prepare($sql);
-        $statement->execute([$postId]);
-        $statement->rowCount();
-        if($statement->rowCount() === 0){
-            return [];
-        }
-        $result = [];
-        foreach ($statement->fetchAll() as $user){
-            $result [] = new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["birth_date"]), $user["email"], $user["password"], $user["role"], new \DateTime($user["created_at"]));
-        }
-        return $result;
-
-
-
+        return new UsersEntity($user['id'], $user['surname'], $user['name'], $user['pseudo'],$user['birth_date'], $user['email'], $user['password'], $user['role']);
     }
 
 
     /**
      * @throws EntityNotFoundException
+     * @throws Exception
      */
     public function findByEmailAndPassword(string $email, string $password): UsersEntity
     {
@@ -87,7 +65,29 @@ class UsersRepository
         if ($user === false) {
             throw new EntityNotFoundException();
         }
-        return new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], $user["picture"], new \DateTime($user["created_at"]), $user["email"], $user["password"], $user["role"], new \DateTime($user["created_at"]));
+        return new UsersEntity($user['id'], $user['surname'], $user['name'], $user['pseudo'], ($user['birth_date']), $user['email'], $user['password']);
+    }
+
+    public function findByRole(string $role): UsersEntity
+    {
+        $sql = ("SELECT role from users WHERE id=? ");
+        $statement = $this->database->prepare($sql);
+        $statement->execute([$role]);
+        $user = $statement->fetch();
+        if ($user === false) {
+            throw new EntityNotFoundException();
+        }
+        return new UsersEntity($user['id'], $user['surname'], $user['name'], $user['pseudo'], ($user['birth_date']), $user['email'], $user['password'], $user['role']);
+    }
+
+    Public function register(UsersEntity $usersEntity): void
+    {
+        $sql = "INSERT INTO users (id,surname, name, pseudo, birth_date, email, password, role, created_at) VALUES (?,?,?,?,?,?,?,?,?)";
+        $statement = $this->database->prepare($sql);
+        $statement->execute([$usersEntity->getId(),$usersEntity->getSurname(),$usersEntity->getName(),$usersEntity->getPseudo(),$usersEntity->getBirthDate(), $usersEntity->getEmail(), $usersEntity->getPassword(), $usersEntity->getRole(),$usersEntity->getCreatedAt()->format('Y-m-d')]);
+        $statement->errorInfo();
+        $usersEntity->setId($this->database->lastInsertId());
+
     }
 
 

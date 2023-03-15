@@ -1,0 +1,84 @@
+{% extends '/base.html.twig' %}
+{% block title %}Modifier un post {% endblock %}
+
+
+
+{% block body %}
+
+
+
+    <section class="section-update-post">
+        <div class="title-update-post ">
+            <h1>MODIFIER LE POST <span class="postId">{{ post.id }}</span> </h1>
+        </div>
+        <div class="bloc-update-post">
+            <form class="form-update-post" action="/update-post/{{ post.id }}/confirmation" method="post">
+
+                <div class="input-update-post col-10">
+                    <label for="title" class=" update-post-label">Titre</label>
+                    <div >
+                        <input type="text" class="form-control" name="title" id="title" value="{{ post.title}}" >
+                    </div>
+                </div>
+                {% if createPostViolations.title is not empty %}
+                    <ul class="violation">
+                        {% for createPostViolations in createPostViolations.title %}
+                            <li>{{ createPostViolations }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <div class="input-update-post col-10">
+                    <label for="subtitle" class=" update-post-label">Sous titre</label>
+                    <div >
+                        <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ post.subtitle}}" >
+                    </div>
+                </div>
+                {% if createPostViolations.subtitle is not empty %}
+                    <ul class="violation">
+                        {% for createPostViolations in createPostViolations.subtitle %}
+                            <li>{{ createPostViolations }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <div class="input-create-post col-10" hidden="hidden">
+                    <label for="userId" class=" create-post-label"></label>
+                    <div>
+                        <input type="number" class="form-control" name="userId" id="userId" value="11">
+                    </div>
+                </div>
+                <div class="input-update-post col-10" >
+                    <label for="author" class=" update-post-label">Auteur</label>
+                    <div>
+                        <input type="text" class="form-control" name="author" id="author" value="Actarus"  >
+                    </div>
+                </div>
+                <div class="input-update-post col-10">
+                    <label for="content" class=" update-post-label">Contenu</label>
+                    <div>
+                        <textarea type="text" class="form-control" name="content" id="content" rows="5" >{{ post.content }}</textarea>
+                    </div>
+                </div>
+                {% if createPostViolations.content is not empty %}
+                    <ul class="violation">
+                        {% for createPostViolations in createPostViolations.content %}
+                            <li>{{ createPostViolations }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+
+
+
+                <div class="mb-3 bloc-btn-form-create-post col-12 col-xl-6 col-lg-8 col-sm-8">
+                    <button class="btn btn-primary col-xl-3 col-lg-3 col-sm-4 col-5 btn-form-create-post" type="submit"
+                            name="createPost">Modifier le post
+                    </button>
+                    <a class="btn btn-danger col-xl-3 col-lg-3 col-sm-4 col-5 btn-form-create-post" href="/admin-manager"
+                       role="button">Annuler</a>
+                </div>
+            </form>
+
+        </div>
+    </section>
+{% endblock %}
+

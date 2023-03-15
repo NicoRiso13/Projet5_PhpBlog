@@ -7,32 +7,50 @@
         </div>
 
         <div class="bloc-link">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class=" collapse navbar-collapse  " id="navbarSupportedContent">
-                <ul class="navbar-nav col-4 mb-2 mb-lg-0 " id="nav">
+            {% if session.user.isUser %}
+            <div class="bloc-connected">
+                <img class="icon-Connect" src="/img/icons/iconConnect.png" alt="iconConnect">
+                <p class="connected">Connecté avec le compte : </p>
+                <p class="connected-pseudo" >{{ session.user.email }}</p>
 
-                    <li class="nav-item" id="hover-nav">
-                        <a class="nav-link active" aria-current="page" href="/">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="/login">Se connecter/S'inscrire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/posts">Les Posts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin-manager">Posts Manager</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
-                    </li>
-
-                </ul>
             </div>
+            {% endif %}
+            <div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class=" collapse navbar-collapse  " id="navbarSupportedContent">
+                    <ul class="navbar-nav col-4 mb-2 mb-lg-0 " id="nav">
+
+                        <li class="nav-item" id="hover-nav">
+                            <a class="nav-link active" aria-current="page" href="/">Accueil</a>
+                        </li>
+                        {% if not session.user %}
+                        <li class="nav-item">
+                            <a class="nav-link " href="/login">Se connecter/S'inscrire</a>
+                        </li>
+                        {% endif %}
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/posts">Les Posts</a>
+                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+
+                        {% if session.user %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin-manager">Posts Manager</a>
+                            </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </div>
 </nav>
