@@ -28,7 +28,7 @@ class CommentarysController
         $this->request = $request;
     }
 
-    public function addCommentary()
+    public function addCommentary(): void
     {
         $commentValues = $this->request->getPosts();
         $validator = new CommentaryValidator();

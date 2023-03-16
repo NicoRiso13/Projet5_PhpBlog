@@ -19,6 +19,7 @@ class Request
         $this->session = $session;
     }
 
+
     /**
      * @return array
      */

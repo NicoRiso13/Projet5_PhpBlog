@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 
-use Cassandra\Date;
+
 use DateTime;
 
 class UsersEntity
@@ -28,8 +28,9 @@ private dateTime $createdAt;
      * @param string $birthDate
      * @param string $email
      * @param string $password
+     * @param string $role
      */
-    public function __construct(?int $id, string $surname, string $name, string $pseudo, string $birthDate, string $email, string $password)
+    public function __construct(?int $id, string $surname, string $name, string $pseudo, string $birthDate, string $email, string $password, string $role)
     {
         $this->id = $id;
         $this->surname = $surname;
@@ -38,7 +39,7 @@ private dateTime $createdAt;
         $this->birthDate = $birthDate;
         $this->email = $email;
         $this->password = $password;
-        $this->role = "user";
+        $this->role = $role;
         $this->createdAt = new DateTime();
     }
 

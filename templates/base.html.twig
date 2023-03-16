@@ -63,9 +63,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>
                 </li>
+                {% if session.user.isAdmin %}
                 <li class="nav-item">
-                    <a class="nav-link link-admin" href="/admin-manager">Administration</a>
+                    <a class="nav-link link-admin" href="/admin-manager">Post Manager</a>
                 </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link " href="#">▲ Haut de page ▲</a>
                 </li>

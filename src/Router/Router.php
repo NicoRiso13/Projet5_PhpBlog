@@ -8,15 +8,18 @@ use App\Controllers\CommentarysController;
 use App\Controllers\ContactControllers;
 use App\Controllers\PostController;
 use App\Controllers\UserController;
-use App\Entity\UsersEntity;
 use App\Repository\CommentarysRepository;
 use App\Repository\PostsRepository;
 use App\Repository\UsersRepository;
+use Exception;
 use Twig\Environment;
 
 class Router
 {
 
+    /**
+     * @throws Exception
+     */
     public function routes(Environment $twig, \PDO $database, Request $request): void
     {
 
@@ -40,7 +43,6 @@ class Router
         $router->map('GET', '/posts/[i:id]', [$postsController, 'postDetails']);
         $router->map('GET|POST', '/create-post', [$adminController, 'createPost']);
         $router->map('GET|POST', '/update-post/[i:id]', [$adminController, 'updatePost']);
-        $router->map('GET|POST', '/update-post/[i:id]/confirmation', [$adminController, 'updatePostConfirmation']);
         $router->map('GET|POST', '/delete-post/[i:id]', [$adminController, 'deletePost']);
         $router->map('GET|POST', '/delete-post/[i:id]/confirmation', [$adminController, 'deletePostConfirmation']);
         $router->map('GET|POST', '/add-commentary', [$commentarysController, 'addCommentary']);

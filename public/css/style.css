@@ -244,9 +244,13 @@ font-family: 'Montserrat', sans-serif;
 }
 
 /********** ADMIN UPDATE POST ************/
-
+.title-update-post h1{
+    margin: 50px 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
 .postId {
-
     color: #ff6a00;
     font-weight: bold;
 }

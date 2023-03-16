@@ -18,8 +18,7 @@
     "twig/cssinliner-extra": "^3.5",
     "twig/html-extra": "^3.5",
     "twig/string-extra": "^3.5",
-    "twig/twig": "^3.5",
-    "ext-cassandra": "*"
+    "twig/twig": "^3.5"
   },
   "autoload": {
     "psr-4": {

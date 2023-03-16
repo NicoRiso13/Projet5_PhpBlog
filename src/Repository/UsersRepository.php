@@ -32,7 +32,7 @@ class UsersRepository
         $users = $statement->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach ($users as $user) {
-            $result[] = new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], ($user["birthDate"]), $user["email"], $user["password"], $user["role"], new \DateTime($user["created_at"]));
+            $result[] = new UsersEntity($user["id"], $user["surname"], $user["name"], $user["pseudo"], ($user["birthDate"]), $user["email"], $user["password"], $user["role"]);
 
         }
 
@@ -65,7 +65,7 @@ class UsersRepository
         if ($user === false) {
             throw new EntityNotFoundException();
         }
-        return new UsersEntity($user['id'], $user['surname'], $user['name'], $user['pseudo'], ($user['birth_date']), $user['email'], $user['password']);
+        return new UsersEntity($user['id'], $user['surname'], $user['name'], $user['pseudo'], ($user['birth_date']),$user['email'], $user['password'], $user['role']);
     }
 
     public function findByRole(string $role): UsersEntity

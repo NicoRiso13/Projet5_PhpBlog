@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\PostEntity;
-use DateTime;
 use Exception;
 use PDO;
 
@@ -37,7 +36,7 @@ class PostsRepository
         $statement = $this->database->prepare($sql);
         $statement->execute([$id]);
         $post = $statement->fetch();
-        return new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"], $post['users_id']);
+        return new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"],$post['users_id']);
 
     }
 
@@ -49,7 +48,7 @@ class PostsRepository
     {
         // Récuperation des Posts avec ID par ordre Croisssant
 
-        $sql = ("SELECT * FROM posts ORDER BY id ASC ");
+        $sql = ("SELECT * FROM posts ORDER BY id ");
         return $this->extracted($sql);
     }
 
@@ -71,10 +70,11 @@ class PostsRepository
      */
     public function update(PostEntity $postEntity): void
     {
-        $sql = ("UPDATE `posts` SET `users_id`=?,`title`=?,`subtitle`=?,`author`=?,`content`=? WHERE id=?");
+        $sql = ('UPDATE posts SET id=?,users_id=?,title=?,subtitle=?,author=?,content=?,created_at=? WHERE id=?');
         $statement = $this->database->prepare($sql);
-        $statement->execute([$postEntity->getUserId(), $postEntity->getTitle(),$postEntity->getSubtitle(),$postEntity->getAuthor(),$postEntity->getContent(),$postEntity->getCreatedAt()->format('Y-m-d')]);
+        $statement->execute([$postEntity->getUserId(),$postEntity->getTitle(),$postEntity->getSubtitle(),$postEntity->getAuthor(),$postEntity->getContent(),$postEntity->getCreatedAt()->format('Y-m-d')]) ;
         $postEntity->setId($this->database->lastInsertId());
+
     }
 
     public function delete(int $id): void
@@ -96,7 +96,7 @@ class PostsRepository
         $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach ($posts as $post) {
-            $result[] = new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"], $post['users_id']);
+            $result[] = new PostEntity($post['id'], $post['title'], $post['subtitle'], $post['author'], $post['content'], $post['users_id']);
         }
         return $result;
     }

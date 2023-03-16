@@ -23,7 +23,6 @@ class AdminController
     private Request $request;
 
 
-
     public function __construct(Environment $twig, Request $request, PostsRepository $postsRepository)
     {
         $this->twig = $twig;
@@ -39,15 +38,9 @@ class AdminController
      */
     public function adminManager(): void
     {
-            $posts = $this->postsRepository->read();
-            echo $this->twig->render('/Admin/adminManager.html.twig', ["posts" => $posts]);
-        }
-
-
-
-
-
-
+        $posts = $this->postsRepository->read();
+        echo $this->twig->render('/Admin/adminManager.html.twig', ["posts" => $posts]);
+    }
 
 
     /**
@@ -57,7 +50,6 @@ class AdminController
      */
     public function createPost(): void
     {
-
         $postValues = $this->request->getPosts();
         $validator = new CreatePostValidator();
         $violations = $validator->postValidator($postValues);
@@ -71,66 +63,44 @@ class AdminController
                 return;
             } catch (EntityNotFoundException $e) {
                 $violations ['errors'] [] = "Données de formulaire incorrecte";
+            } catch (Exception $e) {
             }
 
         }
         echo $this->twig->render('/Admin/adminCreatePost.html.twig', ["post" => $postValues, "createPostViolations" => $violations]);
     }
 
-
     /**
      * @throws RuntimeError
      * @throws SyntaxError
      * @throws LoaderError
      * @throws Exception
      */
-
     public function updatePost(int $id): void
     {
-
-        $post = $this->postsRepository->findOneById($id);
-        echo $this->twig->render('/Admin/adminUpdatePost.html.twig', ["post" => $post]);
-
-
-//        $this->postsRepository->findOneById($id);
-//        $postValues = $this->request->getPosts();
-//        $validator = new CreatePostValidator();
-//        $violations = $validator->postValidate($postValues);
-//        if(count($violations) === 0) {
-//            try {
-//
-//                var_dump($postValues);
-//                $postEntity = new PostEntity(null, $postValues['title'], $postValues['subtitle'], $postValues['author'], $postValues['content'], $postValues['usersId']);
-//                $this->postsRepository->update($id);
-//                $this->request->getSession()->addMessage('Post mis à jour avec succés !');
-//                header('location: /admin-manager');
-//                return ($postEntity);
-//            } catch (EntityNotFoundException $e) {
-//                $violations ['errors'] [] = "Données de formulaire incorrecte";
-//            }
-//        }
-//
-//        echo $this->twig->render('/Admin/adminUpdatePost.html.twig',["post" => $postValues, "createPostViolations"=>$violations]);
-
-
-    }
-
-    /**
-     * @throws SyntaxError
-     * @throws RuntimeError
-     * @throws LoaderError
-     * @throws Exception
-     */
-    public function updatePostConfirmation(): void
-    {
+        $this->postsRepository->findOneById($id);
         $postValues = $this->request->getPosts();
-        $postEntity = new PostEntity(null, $postValues['title'], $postValues['subtitle'], $postValues['author'], $postValues['content'], $postValues['userId']);
-        $this->postsRepository->update($postEntity);
-        $this->request->getSession()->addMessage('Post modifié avec succés');
-        header('location: /admin-manager');
+        $validator = new CreatePostValidator();
+        $violations = $validator->postValidator($postValues);
+        if (count($violations) === 0) {
+            try {
+                $postEntity = new PostEntity(null, $postValues['title'], $postValues['subtitle'], $postValues['author'], $postValues['content'], $postValues['userId']);
+                $this->postsRepository->update($postEntity);
+                $this->request->getSession()->addMessage('Post modifié avec succés !');
+                header('location: /admin-manager');
+                return;
+            } catch (EntityNotFoundException $e) {
+                $violations ['errors'] [] = "Données de formulaire incorrecte";
+            } catch (Exception $e) {
+            }
 
-
+        }
+        echo $this->twig->render('/Admin/adminUpdatePost.html.twig', ["post" => $postValues, "createPostViolations" => $violations]);
     }
+
+
+
+
 
     /**
      * @throws SyntaxError

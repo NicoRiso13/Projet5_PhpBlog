@@ -8,11 +8,11 @@
 
 
     <section class="section-update-post">
-        <div class="title-update-post ">
+        <div class="title-update-post">
             <h1>MODIFIER LE POST <span class="postId">{{ post.id }}</span> </h1>
         </div>
         <div class="bloc-update-post">
-            <form class="form-update-post" action="/update-post/{{ post.id }}/confirmation" method="post">
+            <form class="form-update-post" action="/update-post/{{ post.id }}" method="post">
 
                 <div class="input-update-post col-10">
                     <label for="title" class=" update-post-label">Titre</label>
@@ -44,12 +44,6 @@
                     <label for="userId" class=" create-post-label"></label>
                     <div>
                         <input type="number" class="form-control" name="userId" id="userId" value="11">
-                    </div>
-                </div>
-                <div class="input-update-post col-10" >
-                    <label for="author" class=" update-post-label">Auteur</label>
-                    <div>
-                        <input type="text" class="form-control" name="author" id="author" value="Actarus"  >
                     </div>
                 </div>
                 <div class="input-update-post col-10">

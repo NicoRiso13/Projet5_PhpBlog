@@ -7,7 +7,7 @@
         </div>
 
         <div class="bloc-link">
-            {% if session.user.isUser %}
+            {% if session.user %}
             <div class="bloc-connected">
                 <img class="icon-Connect" src="/img/icons/iconConnect.png" alt="iconConnect">
                 <p class="connected">Connecté avec le compte : </p>
@@ -33,15 +33,16 @@
                         </li>
                         {% endif %}
 
-
+                        {% if not session.user.isAdmin %}
                             <li class="nav-item">
                                 <a class="nav-link" href="/posts">Les Posts</a>
                             </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/contact">Contact</a>
                         </li>
+                        {% endif %}
 
-                        {% if session.user %}
+                        {% if session.user.isAdmin %}
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin-manager">Posts Manager</a>
                             </li>

@@ -14,13 +14,14 @@ class PostEntity
 
     private string $author;
     private string $content;
-    private DateTime $createdAt;
-    private int $userId;
+
+    private ?int $userId;
 
 
     private UsersEntity $usersEntity;
+    private DateTime $createdAt;
 
-    public function __construct(?int $id, string $title, string $subtitle, string $author, string $content, int $userId )
+    public function __construct(?int $id, string $title, string $subtitle, string $author, string $content, ?int $userId )
     {
         $this->id = $id;
         $this->title = $title;
@@ -34,7 +35,7 @@ class PostEntity
     /**
      * @return int
      */
-    public function getUserId(): int
+    public function getUserId(): ?int
     {
         return $this->userId;
     }

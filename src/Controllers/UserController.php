@@ -3,12 +3,10 @@
 namespace App\Controllers;
 
 
-use App\Entity\PostEntity;
 use App\Entity\UsersEntity;
 use App\Exceptions\EntityNotFoundException;
 use App\Repository\UsersRepository;
 use App\Router\Request;
-use App\Validation\CreatePostValidator;
 use App\Validation\RegisterValidator;
 use App\Validation\UserLoginValidator;
 use Twig\Environment;
@@ -45,10 +43,15 @@ class UserController
             try {
                 $user = $this->usersRepository->findByEmailAndPassword($values['loginEmail'], $values['loginPassword']);
                 $this->request->getSession()->setUser($user);
-                header("Location: /");
+                if ($_SESSION == $user->isAdmin()) {
+                    header("Location: /admin-manager");
+                } else {
+                    header("Location: /");
+                }
                 return;
             } catch (EntityNotFoundException $e) {
                 $violations ['errors'] [] = "Email ou Password invalide";
+            } catch (\Exception $e) {
             }
         }
         echo $this->twig->render('login.html.twig', ["violations" => $violations, "values" => $values]);
@@ -72,13 +75,11 @@ class UserController
         $userValues = $this->request->getPosts();
         $validator = new RegisterValidator();
         $violations = $validator->registerValidator($userValues);
-        var_dump($userValues);
         if (count($violations) === 0) {
             try {
-                $userEntity = new UsersEntity(null, $userValues['surname'], $userValues['name'], $userValues['pseudo'], $userValues['birthDate'], $userValues['email'], $userValues['password']);
+                $userEntity = new UsersEntity(null, $userValues['surname'], $userValues['name'], $userValues['pseudo'], $userValues['birthDate'], $userValues['email'], $userValues['password'], $userValues['role']);
                 $this->usersRepository->register($userEntity);
                 $this->request->getSession()->setUser($userEntity);
-                var_dump($userEntity);
                 header('location: /');
                 return;
             } catch (EntityNotFoundException $e) {
