@@ -1,0 +1,63 @@
+{% extends '/base.html.twig' %}
+
+{% block title %}Posts Manager {% endblock %}
+
+
+
+{% block body %}
+    <section class="section-page-posts-manager">
+
+        <h1>COMMENTARYS MANAGER</h1>
+
+
+        <div class="bloc-posts-manager m-5 col-12 ">
+            {% for message in session.messages %}
+                <div class="bloc-delete-message">
+                    <span class="badge text-bg-success delete-message col-4">{{ message }}</span>
+                </div>
+            {% endfor %}
+            <table class="table-posts">
+                <thead class="title-table-posts-manager">
+                <tr>
+                    <th colspan="8">Liste des Commentaires</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td class="col-1 title-table"> Id</td>
+                    <td class="col-1 title-table"> Post_id</td>
+                    <td class="col-1 title-table"> Pseudo Utilisateur</td>
+                    <td class="col-4 title-table"> Contenu</td>
+                    <td class="col-1 title-table"> Status</td>
+                    <td class="col-1 title-table"> Refusé le :</td>
+                    <td class="col-2 title-table"> Raison du refus</td>
+                    <td class="col-1 title-table"> Date de création</td>
+                </tr>
+                {% for commentary in commentarys %}
+                    <tr>
+                        <th scope="col" class="scope-id"> {{ commentary.id }}</th>
+                        <td >{{ commentary.postId | capitalize}}</td>
+                        <td >{{ user.pseudo | capitalize}}</td>
+                        <td>{{ commentary.content | capitalize}}</td>
+                        <td>{{ commentary.status| capitalize}}</td>
+                        <td>{{ commentary.refusedAt.format('d/m/Y') }}</td>
+                        <td>{{ commentary.reason | capitalize }}</td>
+                        <td>{{ commentary.createdAt.format('d/m/Y') }}</td>
+                        <td> <a href="/commentarys/{{ commentary.id }}{{ post.id }}" ><img class="icon-posts-manager" src="/img/icons/iconRead.png" alt="Voir le commentaire" title="Voir le commentaire"></a></td>
+                        <td> <a href="#" ><img class="icon-posts-manager" src="/img/icons/icon-valid.png" alt="Valider le commentaire" title="Valider le commentaire"></a></td>
+                        <td> <a href="#" ><img class="icon-posts-manager" src="/img/icons/icon-refus.png" alt="Refuser le commentaire" title="Refuser le commentaire"></a></td>
+                    </tr>
+
+                {% endfor %}
+
+            </table>
+
+
+
+
+
+        </div>
+
+
+    </section>
+
+{% endblock %}

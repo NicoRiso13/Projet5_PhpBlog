@@ -11,7 +11,8 @@
 
 
         <div class="bloc-posts-manager m-5 col-12 ">
-            <a href="/create-post"><button class="btn btn-primary create-post-btn" >Créer un nouveau post</button></a>
+            <a href="/create-post"><button class="btn btn-primary create-post-btn " >Créer un nouveau post</button></a>
+            <a href="/commentarys"><button class="btn btn-warning view-commentarys-btn" >Messages à valider</button></a>
             {% for message in session.messages %}
                 <div class="bloc-delete-message">
                     <span class="badge text-bg-success delete-message col-4">{{ message }}</span>

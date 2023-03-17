@@ -8,12 +8,12 @@
 
         <div class="bloc-link">
             {% if session.user %}
-            <div class="bloc-connected">
-                <img class="icon-Connect" src="/img/icons/iconConnect.png" alt="iconConnect">
-                <p class="connected">Connecté avec le compte : </p>
-                <p class="connected-pseudo" >{{ session.user.email }}</p>
+                <div class="bloc-connected">
+                    <img class="icon-Connect" src="/img/icons/iconConnect.png" alt="iconConnect">
+                    <p class="connected">Connecté avec le compte : </p>
+                    <p class="connected-pseudo">{{ session.user.email }}</p>
 
-            </div>
+                </div>
             {% endif %}
             <div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -28,18 +28,21 @@
                             <a class="nav-link active" aria-current="page" href="/">Accueil</a>
                         </li>
                         {% if not session.user %}
-                        <li class="nav-item">
-                            <a class="nav-link " href="/login">Se connecter/S'inscrire</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="/login">Se connecter/S'inscrire</a>
+                            </li>
                         {% endif %}
 
                         {% if not session.user.isAdmin %}
                             <li class="nav-item">
                                 <a class="nav-link" href="/posts">Les Posts</a>
                             </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/contact">Contact</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">Contact</a>
+                            </li>
+                            <li class="nav-item" title="Télécharger mon CV" >
+                                <a class="nav-link" href="/pdf/CV.pdf">CV</a>
+                            </li>
                         {% endif %}
 
                         {% if session.user.isAdmin %}

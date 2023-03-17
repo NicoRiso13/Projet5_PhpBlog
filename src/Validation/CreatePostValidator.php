@@ -20,12 +20,7 @@ class CreatePostValidator
         if (empty($postValues['content'])) {
             $createPostViolations ['content'] [] = "Veuillez rédiger un contenu";
         }
-        if (empty($postValues['author'])) {
-            $createPostViolations ['author'] [] = "Veuillez rédiger un contenu";
-        }
-        if (empty($postValues['userId'])) {
-            $createPostViolations ['userId'] [] = "Veuillez rédiger un contenu";
-        }
+
 
         if(!empty($postValues['title']) && strlen($postValues['title']) >255 ){
             $createPostViolations ['title'] [] = "Trop de carctères saisies";

@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\PostEntity;
+use App\Exceptions\EntityNotFoundException;
 use Exception;
+use Faker\Core\DateTime;
 use PDO;
 
 class PostsRepository
@@ -29,6 +31,7 @@ class PostsRepository
 
     /**
      * @throws Exception
+     * @throws EntityNotFoundException
      */
     public function findOneById(int $id): PostEntity
     {
@@ -36,13 +39,18 @@ class PostsRepository
         $statement = $this->database->prepare($sql);
         $statement->execute([$id]);
         $post = $statement->fetch();
-        return new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"],$post['users_id']);
+        if ($post === false) {
+            throw new EntityNotFoundException();
+        }
+        $postEntity = new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"], $post['users_id']);
+        $postEntity->setCreatedAt(new \DateTime($post['created_at']));
 
+        return $postEntity;
     }
 
     /**
-     * @throws Exception
      * @return array<PostEntity>
+     * @throws Exception
      */
     public function read(): array
     {
@@ -59,10 +67,9 @@ class PostsRepository
     {
         $sql = "INSERT INTO posts (users_id, title, subtitle, author, content, created_at) VALUES (?,?,?,?,?,?)";
         $statement = $this->database->prepare($sql);
-        $statement->execute([$postEntity->getUserId(), $postEntity->getTitle(),$postEntity->getSubtitle(),$postEntity->getAuthor(),$postEntity->getContent(),$postEntity->getCreatedAt()->format('Y-m-d')]);
+        $statement->execute([$postEntity->getUserId(), $postEntity->getTitle(), $postEntity->getSubtitle(), $postEntity->getAuthor(), $postEntity->getContent(), $postEntity->getCreatedAt()->format('Y-m-d')]);
         $postEntity->setId($this->database->lastInsertId());
     }
-
 
 
     /**
@@ -70,10 +77,17 @@ class PostsRepository
      */
     public function update(PostEntity $postEntity): void
     {
-        $sql = ('UPDATE posts SET id=?,users_id=?,title=?,subtitle=?,author=?,content=?,created_at=? WHERE id=?');
+        $sql = ('UPDATE posts SET users_id=?,title=?,subtitle=?,author=?,content=?,created_at=? WHERE id=?');
         $statement = $this->database->prepare($sql);
-        $statement->execute([$postEntity->getUserId(),$postEntity->getTitle(),$postEntity->getSubtitle(),$postEntity->getAuthor(),$postEntity->getContent(),$postEntity->getCreatedAt()->format('Y-m-d')]) ;
-        $postEntity->setId($this->database->lastInsertId());
+        $result = $statement->execute([
+            $postEntity->getUserId(),
+            $postEntity->getTitle(),
+            $postEntity->getSubtitle(),
+            $postEntity->getAuthor(),
+            $postEntity->getContent(),
+            $postEntity->getCreatedAt()->format('Y-m-d'),
+            $postEntity->getId(),
+        ]);
 
     }
 
@@ -96,7 +110,9 @@ class PostsRepository
         $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach ($posts as $post) {
-            $result[] = new PostEntity($post['id'], $post['title'], $post['subtitle'], $post['author'], $post['content'], $post['users_id']);
+            $postEntity = new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"], $post['users_id']);
+            $postEntity->setCreatedAt(new \DateTime($post['created_at']));
+            $result [] = $postEntity;
         }
         return $result;
     }

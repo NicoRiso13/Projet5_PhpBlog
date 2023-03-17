@@ -5,28 +5,35 @@ namespace App\Controllers;
 use App\Entity\CommentaryEntity;
 use App\Exceptions\EntityNotFoundException;
 use App\Repository\CommentarysRepository;
-use App\Repository\PostsRepository;
 use App\Repository\UsersRepository;
 use App\Router\Request;
 use App\Validation\CommentaryValidator;
 use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 
 class CommentarysController
 {
 
     private CommentarysRepository $commentarysRepository;
-
+    private Environment $twig;
 
     private Request $request;
+    private UsersRepository $usersRepository;
 
 
-    public function __construct( CommentarysRepository $commentarysRepository, Request $request)
+    public function __construct(Environment $twig, UsersRepository $usersRepository,CommentarysRepository $commentarysRepository, Request $request)
     {
-
+        $this->twig = $twig;
+        $this->usersRepository = $usersRepository;
         $this->commentarysRepository = $commentarysRepository;
         $this->request = $request;
+
     }
+
+
 
     public function addCommentary(): void
     {
@@ -45,4 +52,34 @@ class CommentarysController
             }
         }
     }
+
+    /**
+     * @throws RuntimeError
+     * @throws SyntaxError
+     * @throws LoaderError
+     */
+    public function viewAllCommentarys(): void
+    {
+
+        $commentarys = $this->commentarysRepository->findAll();
+        foreach ($commentarys as $commentary){
+            $user = $this->usersRepository->findOneById($commentary->getUserId());
+            $commentary->setUsersEntity($user);
+        }
+        echo $this->twig->render('commentarys.html.twig', ["commentarys" => $commentarys, "user" => $user]);
+    }
+
+
+
+    public function detailsCommentary(int $id): void
+    {
+
+        $commentarys = $this->commentarysRepository->findOneById($id);
+        foreach ($commentarys as $commentary){
+            $user = $this->usersRepository->findOneById($commentary->getUserId());
+            $commentarys->setUsersEntity($user);
+        }
+        echo $this->twig->render('detailsCommentary.html.twig', ["commentary" => $commentarys]);
+    }
+
 }

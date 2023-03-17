@@ -1,0 +1,31 @@
+{% extends '/base.html.twig' %}
+{% block title %}Details du Message{% endblock %}
+
+{% block body %}
+    <section class="section-page-details-commentaire">
+
+
+        <h1 class="titre-page-admin">Validation du commentaire (Id: <span class="postId">{{ commentary.id }}</span>)</h1>
+        <form class="form-valid-commentary col-10" action="#" method="post">
+            <div class="content-commentary ">
+                <label class="label-details-comment" for="detailsComment">Contenu du commentaire</label>
+                <textarea class="col-12" name="detailsComment" id="detailsComment"
+                          rows="5">{{ commentary.content }}</textarea>
+            </div>
+            <div class="bloc-btn-valid-comment">
+                    <button class="btn btn-primary btn-valid-comment" type="submit">Valider le commentaire</button>
+                    <button class="btn btn-danger btn-valid-comment" type="reset">Refuser le commentaire</button>
+            </div>
+        </form>
+        <p></p>
+
+
+    </section>
+
+
+
+
+
+
+
+{% endblock %}

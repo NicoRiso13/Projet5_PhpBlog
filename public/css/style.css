@@ -34,7 +34,7 @@ font-family: 'Montserrat', sans-serif;
     margin-right: 5px;
     animation-name: icon-connect;
     animation-duration: 2s;
-    opacity: 0;
+    opacity: 1;
     animation-iteration-count: infinite;
     transition: ease-in-out;
 }
@@ -193,9 +193,12 @@ font-family: 'Montserrat', sans-serif;
 
 }
 
-.create-post-btn {
+.create-post-btn, .view-commentarys-btn {
     margin-bottom: 40px;
+    width: 200px;
+
 }
+
 
 .table-posts td, th {
     border: 1px solid #333;
@@ -342,6 +345,53 @@ font-family: 'Montserrat', sans-serif;
     margin: 50px 0;
 
 }
+
+/******************************* SECTION VALIDATION MESSAGE *******************************/
+
+.section-page-details-commentaire{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 25px;
+
+}
+
+.section-page-details-commentaire h1{
+
+    margin: 50px 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+.label-details-comment{
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 5px;
+}
+#detailsComment{
+    padding: 10px;
+}
+.content-commentary{
+
+    padding:5px;
+}
+.bloc-btn-valid-comment{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 100px 0 150px 0;
+
+}
+.btn-valid-comment{
+    margin: 0 10px 0 10px;
+}
+
+
+
+
+
+
+
+
 
 
 /******************************* SECTION HOMEPAGE *******************************/
@@ -1118,13 +1168,13 @@ textarea {
 
 @keyframes icon-connect {
     0% {
-        opacity: 0;
-    }
-    50%{
         opacity: 1;
     }
-    100% {
+    50%{
         opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 
 }

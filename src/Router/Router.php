@@ -25,7 +25,7 @@ class Router
 
         $router = new AltoRouter();
         $contactController = new ContactControllers($twig, $request);
-        $commentarysController = new CommentarysController(new CommentarysRepository($database),$request);
+        $commentarysController = new CommentarysController($twig, new UsersRepository($database),new CommentarysRepository($database),$request);
         $postsRepository = new PostsRepository($database);
         $postsController = new PostController($twig ,$postsRepository, new CommentarysRepository($database), new UsersRepository($database));
         $userController = new UserController($twig, $request ,new UsersRepository($database));
@@ -46,8 +46,11 @@ class Router
         $router->map('GET|POST', '/delete-post/[i:id]', [$adminController, 'deletePost']);
         $router->map('GET|POST', '/delete-post/[i:id]/confirmation', [$adminController, 'deletePostConfirmation']);
         $router->map('GET|POST', '/add-commentary', [$commentarysController, 'addCommentary']);
+        $router->map('GET', '/commentarys', [$commentarysController, 'viewAllCommentarys']);
+        $router->map('GET', '/commentarys/[i:id]', [$commentarysController, 'detailsCommentary']);
         $router->map('GET', '/admin-manager', [$adminController, 'adminManager']);
         $router->map('GET|POST', '/contact', [$contactController, 'contact']);
+
 
         $match = $router->match();
 

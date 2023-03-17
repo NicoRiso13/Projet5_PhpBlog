@@ -9,10 +9,10 @@
 
     <section class="section-update-post">
         <div class="title-update-post">
-            <h1>MODIFIER LE POST <span class="postId">{{ post.id }}</span> </h1>
+            <h1>MODIFIER LE POST <span class="postId">{{ postId }}</span> </h1>
         </div>
         <div class="bloc-update-post">
-            <form class="form-update-post" action="/update-post/{{ post.id }}" method="post">
+            <form class="form-update-post" action="/update-post/{{ postId }}" method="post">
 
                 <div class="input-update-post col-10">
                     <label for="title" class=" update-post-label">Titre</label>
@@ -40,12 +40,7 @@
                         {% endfor %}
                     </ul>
                 {% endif %}
-                <div class="input-create-post col-10" hidden="hidden">
-                    <label for="userId" class=" create-post-label"></label>
-                    <div>
-                        <input type="number" class="form-control" name="userId" id="userId" value="11">
-                    </div>
-                </div>
+
                 <div class="input-update-post col-10">
                     <label for="content" class=" update-post-label">Contenu</label>
                     <div>

@@ -20,6 +20,11 @@ class Request
     }
 
 
+    public function getMethod(): string
+    {
+        return $this->headers['REQUEST_METHOD'];
+    }
+
     /**
      * @return array
      */
