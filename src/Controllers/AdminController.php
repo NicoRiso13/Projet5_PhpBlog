@@ -47,6 +47,7 @@ class AdminController
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
+     * @throws Exception
      */
     public function createPost(): void
     {
@@ -60,8 +61,8 @@ class AdminController
             $this->postsRepository->save($postEntity);
             $this->request->getSession()->addMessage('Post créé avec succés !');
             header('location: /admin-manager');
-            return;
 
+            return;
         }
         echo $this->twig->render('/Admin/adminCreatePost.html.twig', ["post" => $postValues, "createPostViolations" => $violations]);
     }
@@ -83,10 +84,11 @@ class AdminController
 
         $postValues = $this->request->getPosts();
         $violations = [];
+
         if ($this->request->getMethod() === 'POST') {
             $validator = new CreatePostValidator();
             $violations = $validator->postValidator($postValues);
-var_dump($violations);
+
             if (count($violations) === 0) {
                 $postEntity->setTitle($postValues['title']);
                 $postEntity->setSubtitle($postValues['subtitle']);
@@ -105,39 +107,6 @@ var_dump($violations);
 
         echo $this->twig->render('/Admin/adminUpdatePost.html.twig', ["post" => $postValues, "createPostViolations" => $violations, "postId" => $id]);
     }
-
-
-
-//    /**
-//     * @throws RuntimeError
-//     * @throws SyntaxError
-//     * @throws LoaderError
-//     * @throws Exception
-//     */
-//
-//    public function updatePost(int $id): void
-//    {
-//        $postValues = $this->postsRepository->findOneById($id);
-//        echo $this->twig->render('/Admin/adminUpdatePost.html.twig', ["post" => $postValues]);
-//        var_dump($postValues);
-//    }
-//
-//    /**
-//     * @throws SyntaxError
-//     * @throws RuntimeError
-//     * @throws LoaderError
-//     * @throws Exception
-//     */
-//    public function updatePostConfirmation(): void
-//    {
-//
-//        $postValues = $this->request->getPosts();
-//        $postEntity = new PostEntity(null, $postValues['title'], $postValues['subtitle'], $postValues['author'], $postValues['content'], $postValues['userId']);
-//        $this->postsRepository->update($postEntity);
-//        $this->request->getSession()->addMessage('Post modifié avec succés !');
-//        header('location: /admin-manager');
-//
-//    }
 
 
     /**

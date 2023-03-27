@@ -61,7 +61,7 @@ class PostController
     public function postDetails(int $id): void
     {
         $post = $this->postsRepository->findOneById($id);
-        $commentarys = $this->commentarysRepository->findByPost($id);
+        $commentarys = $this->commentarysRepository->findByPostValidate($id);
         foreach ($commentarys as $commentary){
             $user = $this->usersRepository->findOneById($commentary->getUserId());
             $commentary->setUsersEntity($user);

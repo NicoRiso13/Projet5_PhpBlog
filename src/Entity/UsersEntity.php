@@ -169,11 +169,17 @@ private dateTime $createdAt;
         return $this->role;
     }
 
+    /**
+     * @return bool
+     */
     public function isAdmin(): bool
     {
         return $this->role === 'admin';
     }
 
+    /**
+     * @return bool
+     */
     public function isUser(): bool
     {
         return $this->role === 'user';
@@ -195,9 +201,9 @@ private dateTime $createdAt;
         return $this->createdAt;
     }
 
-    public function setCreatedAt(): DateTime
+    public function setCreatedAt(DateTime $createdAt): void
     {
-        return $this->createdAt;
+        $this->createdAt = $createdAt;
     }
 
 

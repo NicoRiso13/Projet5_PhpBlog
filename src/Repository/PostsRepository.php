@@ -42,7 +42,7 @@ class PostsRepository
         if ($post === false) {
             throw new EntityNotFoundException();
         }
-        $postEntity = new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"], $post['users_id']);
+        $postEntity = new PostEntity($post['id'], $post['title'], $post['subtitle'], $post['author'], $post['content'], $post['users_id']);
         $postEntity->setCreatedAt(new \DateTime($post['created_at']));
 
         return $postEntity;
@@ -75,11 +75,11 @@ class PostsRepository
     /**
      * @throws Exception
      */
-    public function update(PostEntity $postEntity): void
+    public function update(PostEntity $postEntity): bool
     {
         $sql = ('UPDATE posts SET users_id=?,title=?,subtitle=?,author=?,content=?,created_at=? WHERE id=?');
         $statement = $this->database->prepare($sql);
-        $result = $statement->execute([
+        return $statement->execute([
             $postEntity->getUserId(),
             $postEntity->getTitle(),
             $postEntity->getSubtitle(),
@@ -87,8 +87,8 @@ class PostsRepository
             $postEntity->getContent(),
             $postEntity->getCreatedAt()->format('Y-m-d'),
             $postEntity->getId(),
-        ]);
 
+        ]);
     }
 
     public function delete(int $id): void
@@ -110,7 +110,7 @@ class PostsRepository
         $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach ($posts as $post) {
-            $postEntity = new PostEntity($post["id"], $post["title"], $post["subtitle"], $post["author"], $post["content"], $post['users_id']);
+            $postEntity = new PostEntity($post['id'], $post['title'], $post['subtitle'], $post['author'], $post['content'], $post['users_id']);
             $postEntity->setCreatedAt(new \DateTime($post['created_at']));
             $result [] = $postEntity;
         }

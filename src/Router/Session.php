@@ -2,6 +2,7 @@
 
 namespace App\Router;
 
+use App\Entity\CommentaryEntity;
 use App\Entity\UsersEntity;
 use App\Repository\UsersRepository;
 
@@ -16,6 +17,14 @@ class Session
     {
         if (isset($_SESSION ['user'])) {
             return $_SESSION['user'];
+        }
+        return null;
+
+    }
+    public function getCommentaryStatus(): ?CommentaryEntity
+    {
+        if (isset($_SESSION ['submission'])) {
+            return $_SESSION['submission'];
         }
         return null;
 

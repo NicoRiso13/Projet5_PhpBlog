@@ -52,6 +52,8 @@ class UsersRepository
     }
 
 
+
+
     /**
      * @throws EntityNotFoundException
      * @throws Exception
@@ -67,25 +69,13 @@ class UsersRepository
         }
         return new UsersEntity($user['id'], $user['surname'], $user['name'], $user['pseudo'], ($user['birth_date']),$user['email'], $user['password'], $user['role']);
     }
-
-    public function findByRole(string $role): UsersEntity
-    {
-        $sql = ("SELECT role from users WHERE id=? ");
-        $statement = $this->database->prepare($sql);
-        $statement->execute([$role]);
-        $user = $statement->fetch();
-        if ($user === false) {
-            throw new EntityNotFoundException();
-        }
-        return new UsersEntity($user['id'], $user['surname'], $user['name'], $user['pseudo'], ($user['birth_date']), $user['email'], $user['password'], $user['role']);
-    }
+    
 
     Public function register(UsersEntity $usersEntity): void
     {
         $sql = "INSERT INTO users (id,surname, name, pseudo, birth_date, email, password, role, created_at) VALUES (?,?,?,?,?,?,?,?,?)";
         $statement = $this->database->prepare($sql);
         $statement->execute([$usersEntity->getId(),$usersEntity->getSurname(),$usersEntity->getName(),$usersEntity->getPseudo(),$usersEntity->getBirthDate(), $usersEntity->getEmail(), $usersEntity->getPassword(), $usersEntity->getRole(),$usersEntity->getCreatedAt()->format('Y-m-d')]);
-        $statement->errorInfo();
         $usersEntity->setId($this->database->lastInsertId());
 
     }

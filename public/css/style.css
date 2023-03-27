@@ -171,7 +171,6 @@ font-family: 'Montserrat', sans-serif;
 .table-posts {
     border-spacing: 2px;
     border-collapse: separate;
-    margin-bottom: 150px;
 
 }
 
@@ -348,6 +347,10 @@ font-family: 'Montserrat', sans-serif;
 
 /******************************* SECTION VALIDATION MESSAGE *******************************/
 
+.commentary-manager{
+    padding-bottom: 100px;
+}
+
 .section-page-details-commentaire{
     display: flex;
     flex-direction: column;
@@ -363,16 +366,14 @@ font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
 }
-.label-details-comment{
+.content-commentary h6{
+    font-size: 1rem;
     font-family: 'Orbitron', sans-serif;
-    margin-bottom: 5px;
 }
-#detailsComment{
-    padding: 10px;
-}
-.content-commentary{
 
-    padding:5px;
+.detail-commentary{
+    border: 1px solid #4b4b4b;
+    padding:10px;
 }
 .bloc-btn-valid-comment{
     display: flex;
@@ -384,6 +385,27 @@ font-family: 'Montserrat', sans-serif;
 .btn-valid-comment{
     margin: 0 10px 0 10px;
 }
+
+
+.title-table-refused, .title-table-validate{
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+.commentarys-refused{
+    background-color: red;
+}
+.commentarys-validate{
+    background-color: darkgreen;
+}
+.not-validate-commentary {
+    margin-top: 15px;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+}
+
 
 
 

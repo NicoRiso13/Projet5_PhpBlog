@@ -24,21 +24,19 @@
 
     <div class="bloc-post-commentarys col-9">
         <h6>Espace commentaires</h6>
+        {% for message in session.messages %}
+            <div class="bloc-delete-message col-8">
+                <span class="badge text-bg-success delete-message col-10">{{ message }}</span>
+            </div>
+        {% endfor %}
         {% if session.user %}
         <div class="bloc-form-commentary col-12">
-            <form class="commentary-form" method="post" action="/add-commentary">
+            <form class="commentary-form"  action="/posts/{{ post.id }}/add-commentary" method="post">
                 <label class="label-commentary" for="comment">Ajoutez votre commentaire</label>
                 <textarea class="col-12" name="comment" id="comment" rows="5"></textarea>
-                <div hidden="hidden">
-                    <label for="userId" class="register-label"></label>
-                    <input type="text" class="input-register-form" name="userId" id="userId" value="{{ user.id }}">
-                </div>
-                <div hidden="hidden">
-                    <label for="postId" class="register-label"></label>
-                    <input type="text" class="input-register-form" name="postId" id="postId" value="{{ post.id }}">
-                </div>
+
                 <div class="mb-3">
-                    <button class="btn btn-primary" type="submit"  >Valider</button>
+                    <button class="btn btn-primary" type="submit" >Valider</button>
                 </div>
             </form>
         </div>

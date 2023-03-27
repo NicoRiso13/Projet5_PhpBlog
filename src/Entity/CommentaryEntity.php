@@ -7,12 +7,11 @@ use DateTime;
 class CommentaryEntity
 {
 
-    private int $id;
+    private ?int $id;
     private string $content;
     private datetime $createdAt;
     private ?datetime $refusedAt;
     private string $status;
-    private ?string $reason;
     private int $userId;
     private int $postId;
     private UsersEntity $usersEntity;
@@ -23,18 +22,16 @@ class CommentaryEntity
      * @param string $content
      * @param DateTime|null $refusedAt
      * @param string $status
-     * @param string|null $reason
      * @param int $userId
      * @param int $postId
      */
-    public function __construct(?int $id, string $content, ?DateTime $refusedAt, string $status, ?string $reason, int $userId, int $postId)
+    public function __construct(?int $id, string $content, ?DateTime $refusedAt, string $status, int $userId, int $postId)
     {
         $this->id = $id;
         $this->content = $content;
         $this->createdAt = new DateTime();
         $this->refusedAt = $refusedAt;
         $this->status = $status;
-        $this->reason = $reason;
         $this->userId = $userId;
         $this->postId = $postId;
     }
@@ -56,6 +53,13 @@ class CommentaryEntity
     {
         $this->usersEntity = $usersEntity;
     }
+
+    /**
+     * @return string
+     */
+
+
+
 
     /**
      * @return int
@@ -163,6 +167,30 @@ class CommentaryEntity
     }
 
     /**
+     * @return bool
+     */
+    public function isValidate(): bool
+    {
+        return $this->status === 'validate';
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRefused(): bool
+    {
+        return $this->status === 'refused';
+    }
+
+    /**
+     * @return bool
+     */
+    public function inSubmission(): bool
+    {
+        return $this->status === 'submission';
+    }
+
+    /**
      * @param string $status
      */
     public function setStatus(string $status): void
@@ -170,21 +198,6 @@ class CommentaryEntity
         $this->status = $status;
     }
 
-    /**
-     * @return string
-     */
-    public function getReason(): ?string
-    {
-        return $this->reason;
-    }
-
-    /**
-     * @param string $reason
-     */
-    public function setReason(string $reason): void
-    {
-        $this->reason = $reason;
-    }
 
 
 
