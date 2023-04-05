@@ -40,7 +40,8 @@ Une fois l'inscription effectuée, téléchargez PHPStorm et installer le. (Il e
 Git est l'outil que nous utilisons pour développer en équipe. Mais il nécessite un peu de configuration pour que l'intégration avec PHPStorm fonctionne parfaitement.
 
 #### Sous Windows 10 :
-Installer Git
+*Installer Git*
+
 Il faut commencer par installer Git en laissant tout par défaut.
 
 Installer OpenSSH
