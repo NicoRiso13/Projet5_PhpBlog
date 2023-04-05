@@ -36,6 +36,9 @@ Pour les différents projets de développement au GInfo on utilise PHPStorm qui 
 Tout commence ici, avec votre mail Centrale : https://www.jetbrains.com/shop/eform/students
 Une fois l'inscription effectuée, téléchargez PHPStorm et installer le. (Il est disponible pour toutes les plateformes)
 
+
+
+
 ### Installer WampServer
 
 Télécharger WampServer via le lien suivant : https://www.wampserver.com/  
