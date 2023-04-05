@@ -56,6 +56,16 @@ Télécharger WampServer via le lien suivant : https://www.wampserver.com/
   - Cliquez sur le lien « Localhost » du menu de WampServer ou ouvrez votre navigateur préféré, et allez à l’adresse http://localhost
 
 
+### Installer Composer
+
+  - Télécharger Composer via le lien suivant : https://www.wampserver.com/
+  - Le programme d’installation - qui nécessite que PHP soit déjà installé - téléchargera Composer pour vous et configurera votre variable d’environnement PATH Vous pouvez donc simplement appeler à partir de n’importe quel annuaire. composer
+
+Téléchargez et exécutez Composer-Setup.exe - il installera la dernière version de Composer chaque fois qu’elle sera exécutée.
+
+
+
+
 
 
 
