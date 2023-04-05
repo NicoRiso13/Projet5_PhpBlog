@@ -60,7 +60,13 @@ Télécharger WampServer via le lien suivant : https://www.wampserver.com/
 
   - Télécharger Composer via le lien suivant : https://getcomposer.org/download/
   - Le programme d’installation - qui nécessite que PHP soit déjà installé - téléchargera Composer pour vous et configurera votre variable d’environnement PATH Vous pouvez donc simplement appeler à partir de n’importe quel annuaire. composer
-  - Exécutez Composer-Setup.exe - il installera la dernière version de Composer chaque fois qu’elle sera exécutée.
+  - Exécutez Composer-Setup.exe ( il installera la dernière version de Composer chaque fois qu’elle sera exécutée).
+
+### Installer Git
+
+#### *Installation sur Windows* :
+
+Il existe aussi plusieurs manières d’installer Git sur Windows. L’application officielle est disponible au téléchargement sur le site web de Git. Rendez-vous sur https://git-scm.com/download/win et le téléchargement démarrera automatiquement. Notez que c’est un projet nommé Git for Windows (appelé aussi msysGit), qui est séparé de Git lui-même ; pour plus d’information, rendez-vous à https://msysgit.github.io/.
 
 
 
