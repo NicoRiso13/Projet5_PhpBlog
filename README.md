@@ -84,7 +84,7 @@ Il existe aussi plusieurs manières d’installer Git sur Windows. L’applicati
         git clone https://github.com/NicoRiso13/Projet5_PhpBlog.git
         
         
-        ![clone](https://user-images.githubusercontent.com/122614808/230204988-88027890-b2b8-4fad-a71c-57c68a4ba659.jpg)
+ ![clone](https://user-images.githubusercontent.com/122614808/230204988-88027890-b2b8-4fad-a71c-57c68a4ba659.jpg)
 
 
 
