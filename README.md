@@ -19,7 +19,7 @@
 
 ## Pré-requis :
 
- - PHPStorm ( https://www.jetbrains.com/fr-fr/phpstorm/download/#section=windows )
+ - PHPStorm Versin 7.4.26 ( https://www.jetbrains.com/fr-fr/phpstorm/download/#section=windows )
  - Composer ( https://getcomposer.org/download/ )
  - Wampserver ( https://www.wampserver.com/ )
  - Git ( https://git-scm.com/downloads )
