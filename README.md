@@ -36,32 +36,21 @@ Pour les différents projets de développement au GInfo on utilise PHPStorm qui 
 Tout commence ici, avec votre mail Centrale : https://www.jetbrains.com/shop/eform/students
 Une fois l'inscription effectuée, téléchargez PHPStorm et installer le. (Il est disponible pour toutes les plateformes)
 
-### Configurer PHPStorm pour l'utilisation avec git
-Git est l'outil que nous utilisons pour développer en équipe. Mais il nécessite un peu de configuration pour que l'intégration avec PHPStorm fonctionne parfaitement.
+### Installer WampServer
 
-#### Sous Windows 10 :
+Télécharger WampServer via le lien suivant : https://www.wampserver.com/  
 
-Il faut commencer par installer Git en laissant tout par défaut.
+####*Étapes d'installation* :
 
-#### *Installer OpenSSH*
+  - Double-cliquez sur le fichier téléchargé et laissez vous guider. Tout est géré par l’installeur de WampServer. Par défaut, WampServer est livré avec les toutes dernières versions de Apache, MySQL et PHP.
+  - Une fois installé, vous  pourrez  ajouter  manuellement  des  versions supplémentaires  d’Apache,  PHP ou MySQL (Uniquement compilées VC9, VC10 ou  VC11).
 
-OpenSSH est un outils sous Windows 10 permettant les connexions à distance en utilisant le protocole SSH.
 
-#### *Pour installer OpenSSH :*
+####*Utilisation de WampServer* :
 
-Ouvrez les Paramètres de votre ordinateur, séléctionnez Applications > Applications et fonctionnalités, puis Fonctionnalités facultatives
-Parcourez la liste pour voir si OpenSSH est déjà installé. Si ce n’est pas le cas, sélectionnez Ajouter une fonctionnalité en haut de la page, puis recherchez OpenSSH Client et cliquez sur Installer.
-Une fois l’installation terminée, revenez à Applications > Applications et fonctionnalités et Fonctionnalités facultatives. Vous devriez voir OpenSSH dans la liste.
-
-Générer une paire de clé
-
-Pour générer la paire de clé, ouvrez le PowerShell ou le cmd de votre ordinateur puis exécutez :
-
-    ssh-keygen
-On vous demandera ensuite où vous voulez sauvegarder votre paire de clés puis un mot de passe. Vous pouvez de ne pas mettre de mot de passe mais ce n'est pas recommandé.
-
-Une fois vos clés générées, vous pourrez les retrouver à l'emplacement choisi.
-
+  - Création automatique d’un répertoire « www » lors de l’installation (typiquement c:\wamp\www).
+  - Créez un sous répertoire pour votre projet et déposez-y vos fichiers PHP.
+  - Cliquez sur le lien « Localhost » du menu de WampServer ou ouvrez votre navigateur préféré, et allez à l’adresse http://localhost
 
 
 
