@@ -1,6 +1,6 @@
 # Projet5_BLOG PHP
 
-# Ce projet à pour but de créer notre premier blog en php incluant les fonctionnalités suivantes :
+## Ce projet à pour but de créer notre premier blog en php incluant les fonctionnalités suivantes :
 
 
 En tant qu'utilisateur :
