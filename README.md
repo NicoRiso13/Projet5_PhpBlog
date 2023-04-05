@@ -19,6 +19,23 @@
 
 ## Pré-requis :
 
- - PhpStorm ( https://www.jetbrains.com/fr-fr/phpstorm/download/#section=windows )
+ - PHPStorm ( https://www.jetbrains.com/fr-fr/phpstorm/download/#section=windows )
  - Composer ( https://getcomposer.org/download/ )
  - Wampserver ( https://www.wampserver.com/ )
+ - Git ( https://git-scm.com/downloads )
+
+
+## Pour commencer
+
+#### Installer PHPStorm & Configurer Git
+
+Pour les différents projets de développement au GInfo on utilise PHPStorm qui est un logiciel présentant un bon nombre de fonctionnalités intéressantes (même si on en utilise même pas 10%) et pour lequel on a des licences étudiantes.
+
+#### Créer un compte JetBrains & Installer PHPStorm
+
+Tout commence ici, avec votre mail Centrale : https://www.jetbrains.com/shop/eform/students
+Une fois l'inscription effectuée, téléchargez PHPStorm et installer le. (Il est disponible pour toutes les plateformes)
+
+
+
+
