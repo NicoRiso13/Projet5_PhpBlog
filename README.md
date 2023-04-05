@@ -27,14 +27,18 @@
 
 ## Pour commencer
 
-#### Installer PHPStorm & Configurer Git
+### Installer PHPStorm & Configurer Git
 
 Pour les différents projets de développement au GInfo on utilise PHPStorm qui est un logiciel présentant un bon nombre de fonctionnalités intéressantes (même si on en utilise même pas 10%) et pour lequel on a des licences étudiantes.
 
-#### Créer un compte JetBrains & Installer PHPStorm
+### Créer un compte JetBrains & Installer PHPStorm
 
 Tout commence ici, avec votre mail Centrale : https://www.jetbrains.com/shop/eform/students
 Une fois l'inscription effectuée, téléchargez PHPStorm et installer le. (Il est disponible pour toutes les plateformes)
+
+### Configurer PHPStorm pour l'utilisation avec git
+Git est l'outil que nous utilisons pour développer en équipe. Mais il nécessite un peu de configuration pour que l'intégration avec PHPStorm fonctionne parfaitement.
+
 
 
 
