@@ -77,7 +77,10 @@ Il existe aussi plusieurs manières d’installer Git sur Windows. L’applicati
   ![clone](https://user-images.githubusercontent.com/122614808/230200291-580bac31-a7d3-41c7-a503-a1b2f3c3d01a.jpg)
 
 
+  - Copier le lien donné par Github
 
+Sur un nouveau projet PhpStorm, ouvrez le terminal du logiciel et saisissez la commande suivante :
+        git clone https://LienDuRepositoryACloner
 
 
 
