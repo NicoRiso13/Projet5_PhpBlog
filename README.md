@@ -39,6 +39,30 @@ Une fois l'inscription effectuée, téléchargez PHPStorm et installer le. (Il e
 ### Configurer PHPStorm pour l'utilisation avec git
 Git est l'outil que nous utilisons pour développer en équipe. Mais il nécessite un peu de configuration pour que l'intégration avec PHPStorm fonctionne parfaitement.
 
+#### Sous Windows 10 :
+Installer Git
+Il faut commencer par installer Git en laissant tout par défaut.
+
+Installer OpenSSH
+
+OpenSSH est un outils sous Windows 10 permettant les connexions à distance en utilisant le protocole SSH.
+
+Pour installer OpenSSH :
+
+Ouvrez les Paramètres de votre ordinateur, séléctionnez Applications > Applications et fonctionnalités, puis Fonctionnalités facultatives
+Parcourez la liste pour voir si OpenSSH est déjà installé. Si ce n’est pas le cas, sélectionnez Ajouter une fonctionnalité en haut de la page, puis recherchez OpenSSH Client et cliquez sur Installer.
+Une fois l’installation terminée, revenez à Applications > Applications et fonctionnalités et Fonctionnalités facultatives. Vous devriez voir OpenSSH dans la liste.
+
+Générer une paire de clé
+
+Pour générer la paire de clé, ouvrez le PowerShell ou le cmd de votre ordinateur puis exécutez :
+
+    ssh-keygen
+On vous demandera ensuite où vous voulez sauvegarder votre paire de clés puis un mot de passe. Vous pouvez de ne pas mettre de mot de passe mais ce n'est pas recommandé.
+
+Une fois vos clés générées, vous pourrez les retrouver à l'emplacement choisi.
+
+
 
 
 
