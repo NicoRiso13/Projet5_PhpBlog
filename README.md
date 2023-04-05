@@ -73,6 +73,7 @@ Il existe aussi plusieurs manières d’installer Git sur Windows. L’applicati
 
   - Accédez au **repository**
   - En haut, à droite du repository, cliquer sur « **Code** »
+  
   ![clone](https://user-images.githubusercontent.com/122614808/230200291-580bac31-a7d3-41c7-a503-a1b2f3c3d01a.jpg)
 
 
