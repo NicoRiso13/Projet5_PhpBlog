@@ -12,7 +12,7 @@
  - Un formulaire de contact
  - La possibilité de télécharger un CV
 
-En tant qu'administrateur :
+#### En tant qu'administrateur il offre:
 
  - La possibilité de Créer, Modifier ou Supprimer un post
  - Un système permettant de valider les commentaires saisies par les utilisateurs 
