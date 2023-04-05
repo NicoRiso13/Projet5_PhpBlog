@@ -19,4 +19,6 @@
 
 ## Pré-requis :
 
- - PhpStorm (https://www.jetbrains.com/fr-fr/phpstorm/download/#section=windows)
+ - PhpStorm ( https://www.jetbrains.com/fr-fr/phpstorm/download/#section=windows )
+ - Composer ( https://getcomposer.org/download/ )
+ - Wampserver ( https://www.wampserver.com/ )
