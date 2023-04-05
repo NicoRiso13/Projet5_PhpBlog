@@ -40,13 +40,13 @@ Une fois l'inscription effectuée, téléchargez PHPStorm et installer le. (Il e
 
 Télécharger WampServer via le lien suivant : https://www.wampserver.com/  
 
-####*Étapes d'installation* :
+#### *Étapes d'installation* :
 
   - Double-cliquez sur le fichier téléchargé et laissez vous guider. Tout est géré par l’installeur de WampServer. Par défaut, WampServer est livré avec les toutes dernières versions de Apache, MySQL et PHP.
   - Une fois installé, vous  pourrez  ajouter  manuellement  des  versions supplémentaires  d’Apache,  PHP ou MySQL (Uniquement compilées VC9, VC10 ou  VC11).
 
 
-####*Utilisation de WampServer* :
+#### *Utilisation de WampServer* :
 
   - Création automatique d’un répertoire « www » lors de l’installation (typiquement c:\wamp\www).
   - Créez un sous répertoire pour votre projet et déposez-y vos fichiers PHP.
