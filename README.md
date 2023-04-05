@@ -3,7 +3,7 @@
 ## Ce projet à pour but de créer notre premier blog en php incluant les fonctionnalités suivantes :
 
 
-### En tant qu'utilisateur il permet d'accéder à :
+#### En tant qu'utilisateur il permet d'accéder à :
 
  - Un système d'authentification et d'inscription d'un utilisateur
  - Un accès à tout les Posts disponibles
