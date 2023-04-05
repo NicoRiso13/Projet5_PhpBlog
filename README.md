@@ -71,7 +71,7 @@ Il existe aussi plusieurs manières d’installer Git sur Windows. L’applicati
 
 ### 6 - Installer le projet via GitHub
 
-  - Accédez au _repository_
+  - Accédez au *repository*
 
 
 
