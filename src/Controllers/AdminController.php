@@ -67,6 +67,10 @@ class AdminController
         echo $this->twig->render('/Admin/adminCreatePost.html.twig', ["post" => $postValues, "createPostViolations" => $violations]);
     }
 
+
+
+
+
     /**
      * @throws RuntimeError
      * @throws SyntaxError
