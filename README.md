@@ -86,6 +86,12 @@ Il existe aussi plusieurs manières d’installer Git sur Windows. L’applicati
 
         git clone https://github.com/NicoRiso13/Projet5_PhpBlog.git
         
+### 7 - Mettez à jour le dépôt en local    
+
+Dans votre **projet PhpStorm** ouvrez le terminal du logiciel et saisissez la commande suivante :
+
+        git pull origin main
+        
 
 
 
