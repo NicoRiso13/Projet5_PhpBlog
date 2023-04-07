@@ -1,0 +1,68 @@
+{% extends '/base.html.twig' %}
+{% block title %}Details Posts{% endblock %}
+
+{% block body %}
+
+
+    <h1 class="titre-page-post-details ">Details post</h1>
+
+    <div class="bloc-post-details col-10">
+        <div class="header-bloc-post-details">
+            <div class="post-details col-8">
+                <h1>{{ post.title }}</h1>
+                <h2>{{ post.subtitle }}</h2>
+            </div>
+            <div class="published-at">
+                <h3>Publié par : {{post.author}} le {{ post.createdAt.format('d/m/Y') }}</h3>
+            </div>
+        </div>
+        <div class="content-post-details">
+            <p> {{ post.content }}</p>
+        </div>
+
+    </div>
+
+    <div class="bloc-post-commentarys col-9">
+        <h6>Espace commentaires</h6>
+        {% for message in session.messages %}
+            <div class="bloc-delete-message col-8">
+                <span class="badge text-bg-success delete-message col-10">{{ message }}</span>
+            </div>
+        {% endfor %}
+        {% if session.user %}
+        <div class="bloc-form-commentary col-12">
+            <form class="commentary-form"  action="/posts/{{ post.id }}/add-commentary" method="post">
+                <label class="label-commentary" for="comment">Ajoutez votre commentaire</label>
+                <textarea class="col-12" name="comment" id="comment" rows="5"></textarea>
+
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit" >Valider</button>
+                </div>
+            </form>
+        </div>
+        {% endif %}
+        {% if not session.user %}
+             <div class="section-message-connect-commentary">
+                 <p class="message-connect-commentary"> Pour laisser un commentaire veuillez vous <a href="/login">identifier</a> ou <a href="/register">créer un compte </a> !!</p>
+             </div>
+        {% endif %}
+
+        {% for commentary in commentarys %}
+            <div class="bloc-commentary">
+                <h5>Réponse publiée par : <span class="span-author">{{ commentary.usersEntity.pseudo }}</span>
+                    le {{ commentary.createdAt.format('d/m/Y') }}</h5>
+                <h4>{{ commentary.content }} </h4>
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -3,55 +3,64 @@
 namespace App\Entity;
 
 
+
 use DateTime;
 
 class UsersEntity
 {
 
-private int $id;
+private ?int $id;
 private string $surname;
 private string $name;
 private string $pseudo;
-private string $picture;
-private dateTime $birthDate;
+
+private string $birthDate;
 private string $email;
 private string $password;
 private string $role;
 private dateTime $createdAt;
 
     /**
-     * @param int $id
+     * @param int|null $id
      * @param string $surname
      * @param string $name
      * @param string $pseudo
-     * @param string $picture
-     * @param DateTime $birthDate
+     * @param string $birthDate
      * @param string $email
      * @param string $password
      * @param string $role
-     * @param DateTime $createdAt
      */
-    public function __construct(int $id, string $surname, string $name, string $pseudo, string $picture, DateTime $birthDate, string $email, string $password, string $role, DateTime $createdAt)
+    public function __construct(?int $id, string $surname, string $name, string $pseudo, string $birthDate, string $email, string $password, string $role)
     {
         $this->id = $id;
         $this->surname = $surname;
         $this->name = $name;
         $this->pseudo = $pseudo;
-        $this->picture = $picture;
         $this->birthDate = $birthDate;
         $this->email = $email;
         $this->password = $password;
         $this->role = $role;
-        $this->createdAt = $createdAt;
+        $this->createdAt = new DateTime();
     }
+
+
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
 
 
     /**
@@ -105,34 +114,20 @@ private dateTime $createdAt;
     /**
      * @return string
      */
-    public function getPicture(): string
-    {
-        return $this->picture;
-    }
-
-    /**
-     * @param string $picture
-     */
-    public function setPicture(string $picture): void
-    {
-        $this->picture = $picture;
-    }
-
-    /**
-     * @return DateTime
-     */
-    public function getBirthDate(): DateTime
+    public function getBirthDate(): string
     {
         return $this->birthDate;
     }
 
     /**
-     * @param DateTime $birthDate
+     * @param string $birthDate
      */
-    public function setBirthDate(DateTime $birthDate): void
+    public function setBirthDate(string $birthDate): void
     {
         $this->birthDate = $birthDate;
     }
+
+
 
     /**
      * @return string
@@ -175,6 +170,22 @@ private dateTime $createdAt;
     }
 
     /**
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUser(): bool
+    {
+        return $this->role === 'user';
+    }
+
+    /**
      * @param string $role
      */
     public function setRole(string $role): void
@@ -190,9 +201,6 @@ private dateTime $createdAt;
         return $this->createdAt;
     }
 
-    /**
-     * @param DateTime $createdAt
-     */
     public function setCreatedAt(DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;

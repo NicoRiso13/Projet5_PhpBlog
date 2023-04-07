@@ -1,35 +1,60 @@
-<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg nav-carbon" data-bs-theme="dark">
     <div class="container-fluid bloc-nav">
         <div class="logo-text">
-            <a class="navbar-brand" href="/"><img src="/img/iconBlog-100px.png"></a>
+            <a class="navbar-brand" href="/"><img alt="iconBlog" src="/img/iconBlog-100px.png"></a>
             <h4> Le blog d'Actarus</h4>
             <hr class="nav-separator">
         </div>
 
         <div class="bloc-link">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class=" collapse navbar-collapse  " id="navbarSupportedContent">
-                <ul class="navbar-nav col-4 mb-2 mb-lg-0 " id="nav">
+            {% if session.user %}
+                <div class="bloc-connected">
+                    <img class="icon-Connect" src="/img/icons/iconConnect.png" alt="iconConnect">
+                    <p class="connected">Connecté avec le compte : </p>
+                    <p class="connected-pseudo">{{ session.user.email }}</p>
 
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="/login">Se connecter/S'inscrire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/posts">Les Posts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
-                    </li>
+                </div>
+            {% endif %}
+            <div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class=" collapse navbar-collapse  " id="navbarSupportedContent">
+                    <ul class="navbar-nav col-4 mb-2 mb-lg-0 " id="nav">
 
-                </ul>
+                        <li class="nav-item" id="hover-nav">
+                            <a class="nav-link active" aria-current="page" href="/">Accueil</a>
+                        </li>
+                        {% if not session.user %}
+                            <li class="nav-item">
+                                <a class="nav-link " href="/login">Se connecter/S'inscrire</a>
+                            </li>
+                        {% endif %}
+
+                        {% if not session.user.isAdmin %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/posts">Les Posts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">Contact</a>
+                            </li>
+                            <li class="nav-item" title="Télécharger mon CV" >
+                                <a class="nav-link" href="/pdf/CV.pdf">CV</a>
+                            </li>
+                        {% endif %}
+
+                        {% if session.user.isAdmin %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin-manager">Posts Manager</a>
+                            </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
             </div>
+
         </div>
     </div>
 </nav>

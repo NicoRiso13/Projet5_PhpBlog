@@ -1,0 +1,61 @@
+{% extends '/base.html.twig' %}
+
+{% block title %}Posts Manager {% endblock %}
+
+
+
+{% block body %}
+    <section class="section-page-posts-manager">
+
+        <h1>POSTS MANAGER</h1>
+
+
+        <div class="bloc-posts-manager m-5 col-12 ">
+            <a href="/create-post"><button class="btn btn-primary create-post-btn " >Créer un nouveau post</button></a>
+            <a href="/commentarys"><button class="btn btn-warning view-commentarys-btn" >Messages à valider</button></a>
+            {% for message in session.messages %}
+                <div class="bloc-delete-message">
+                    <span class="badge text-bg-success delete-message col-4">{{ message }}</span>
+                </div>
+            {% endfor %}
+            <table class="table-posts">
+                <thead class="title-table-posts-manager">
+                <tr>
+                    <th colspan="6">Détails des Posts</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td class="col-1 title-table"> Id</td>
+                    <td class="col-2 title-table"> Titre</td>
+                    <td class="col-2 title-table"> Sous titre</td>
+                    <td class="col-2 title-table"> Auteur</td>
+                    <td class="col-4 title-table"> contenu</td>
+                    <td class="col-1 title-table"> Date de création</td>
+                </tr>
+                {% for post in posts %}
+                <tr>
+                    <th scope="col" class="scope-id"> {{ post.id }}</th>
+                    <td >{{ post.title | capitalize}}</td>
+                    <td>{{ post.subtitle | capitalize}}</td>
+                    <td>{{ post.author| capitalize}}</td>
+                    <td>{{ post.content | u.truncate(150, '...') | capitalize }}</td>
+                    <td>{{ post.createdAt.format('d/m/Y') }}</td>
+                    <td> <a href="/posts/{{ post.id }}" ><img class="icon-posts-manager" src="/img/icons/iconRead.png" alt="Voir Posts"></a></td>
+                    <td> <a href="/update-post/{{ post.id }}" ><img class="icon-posts-manager" src="/img/icons/iconModify.png" alt="Voir Posts"></a></td>
+                    <td> <a href="/delete-post/{{ post.id }}" ><img class="icon-posts-manager" src="/img/icons/iconDelete.png" alt="Voir Posts"></a></td>
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+
+
+
+
+        </div>
+
+
+    </section>
+
+{% endblock %}
