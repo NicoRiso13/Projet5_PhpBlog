@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Repository\PostsRepository;
 use App\Router\Request;
+use App\Validation\FormContactValidator;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -15,7 +16,6 @@ class ContactControllers
     private Environment $twig;
 
     private Request $request;
-
 
 
     public function __construct(Environment $twig, Request $request)
@@ -31,26 +31,31 @@ class ContactControllers
      */
     public function contact(): void
     {
-        $to = "nicolas.riso13@gmail.com";
-        $subject = "Test utilisation du mail";
-        $message = "Salut, ceci est un mail de test";
-        $headers[] = 'MIME-Version: 1.0';
-        $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-        // En-têtes additionnels
-        $headers[] = 'To: Mary <mary@example.com>, Kelly <kelly@example.com>';
-        $headers[] = 'From: Anniversaire <anniversaire@example.com>';
-        $headers[] = 'Cc: anniversaire_archive@example.com';
-        $headers[] = 'Bcc: anniversaire_verif@example.com';
-        // Envoi
 
+        $formValues = $this->request->getPosts();
+        $validator = new FormContactValidator();
+        $violations = $validator->contactValidator($formValues);
 
-        if(mail($to, $subject, $message, implode("\r\n", $headers)))
-            echo 'Envoyé !';
-        else
-            echo 'Erreur envoi';
+        if (count($violations) === 0) {
 
-        echo $this->twig->render('/contact.html.twig');
+            $surname = $formValues['surname'];
+            $name = $formValues['name'];
+            $email = $formValues['email'];
+
+            $to = "nicolas.riso13@gmail.com";
+            $subject = "Message utilisateur Blog PHP";
+            $message = $formValues['message'];
+            $headers[] = 'MIME-Version: 1.0';
+            $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+            // En-têtes additionnels
+            $headers[] = 'To: Admin <nicolas.riso13@gmail.com>';
+            $headers[] = "From: ".$surname." ".$name." <".$email."> " ;
+            // Envoi
+
+            $this->request->getSession()->addMessage('Message envoyé avec succés !');
+            header('location: /contact');
+            return;
+        }
+        echo $this->twig->render('/contact.html.twig', ["formValues" => $formValues, "formContactValidations" => $violations]);
     }
-
-
 }

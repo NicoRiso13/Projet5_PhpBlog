@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Connectez-vous {% endblock %}
+{% block title %}Contactez-moi {% endblock %}
 
 
 
@@ -11,8 +11,13 @@
         <div class="title-contact col-4">
             <h1>CONTACTEZ-MOI</h1>
         </div>
+        {% for message in session.messages %}
+            <div class="bloc-delete-message">
+                <span class="badge text-bg-success delete-message col-12">{{ message }}</span>
+            </div>
+        {% endfor %}
         <div class="bloc-contact col-10 col-sm-10 col-lg-8 col-xl-6 ">
-            <form class="form-contact" action="" method="post">
+            <form class="form-contact" action="/contact" method="post">
                 {% if violations.errors is not empty %}
                     <ul class="violation">
                         {% for violation in violations.errors %}
@@ -21,42 +26,59 @@
                     </ul>
                 {% endif %}
                 <div class="input-contact">
-                    <label for="contactSurname" class=" contact-label">Nom</label>
+                    <label for="surname" class=" contact-label">Nom</label>
                     <div class="col-12 col-sm-12">
-                        <input type="text" class="form-control" name="contactSurname" id="contactSurname"
-                               value="{{ values.contactSurname }}" placeholder="Saisissez un nom" >
+                        <input type="text" class="form-control" name="surname" id="surname"
+                               value="{{ formValues.surname }}" placeholder="Saisissez un nom">
                     </div>
-                </div>
-                <div class="input-contact">
-                    <label for="contactName" class=" contact-label">Prénom</label>
-                    <div class="col-12  col-sm-12">
-                        <input type="text" class="form-control" name="contactName" id="contactName"
-                               value="{{ values.contactName }}" placeholder="Saisissez un  prénom" >
-                    </div>
-                </div>
-                <div class="input-contact">
-                    <label for="contactEmail" class=" contact-label">Email</label>
-                    <div class="col-12  col-sm-12">
-                        <input type="email" class="form-control" name="contactEmail" id="contactEmail"
-                               value="{{ values.loginEmail }}" placeholder="Exemple@gmail.com" >
-                    </div>
-                    {% if violations.loginEmail is not empty %}
+                    {% if formContactValidations.surname is not empty %}
                         <ul class="violation">
-                            {% for violation in violations.loginEmail %}
-                                <li>{{ violation }}</li>
+                            {% for formContactValidations in formContactValidations.surname %}
+                                <li>{{ formContactValidations }}</li>
                             {% endfor %}
                         </ul>
                     {% endif %}
                 </div>
                 <div class="input-contact">
-                    <label for="contentMessage" class="contact-label">Message</label>
-                    <div class=" col-12 col-sm-12">
-                        <textarea type="password" class="form-control" name="contentMessage" id="contentMessage" value="{{ values.contentMessage }}" rows="5"></textarea>
+                    <label for="name" class=" contact-label">Prénom</label>
+                    <div class="col-12  col-sm-12">
+                        <input type="text" class="form-control" name="name" id="name"
+                               value="{{ formValues.name }}" placeholder="Saisissez un  prénom">
                     </div>
-                    {% if violations.loginPassword is not empty %}
+                    {% if formContactValidations.name is not empty %}
                         <ul class="violation">
-                            {% for violation in violations.loginPassword %}
-                                <li>{{ violation }}</li>
+                            {% for formContactValidations in formContactValidations.name %}
+                                <li>{{ formContactValidations }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                <div class="input-contact">
+                    <label for="email" class=" contact-label">Email</label>
+                    <div class="col-12  col-sm-12">
+                        <input type="email" class="form-control" name="email" id="email"
+                               value="{{ formValues.email }}" placeholder="Exemple@gmail.com">
+                    </div>
+                    {% if formContactValidations.email is not empty %}
+                        <ul class="violation">
+                            {% for formContactValidations in formContactValidations.email %}
+                                <li>{{ formContactValidations }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                <div class="input-contact">
+                    <label for="message" class="contact-label">Message</label>
+                    <div class=" col-12 col-sm-12">
+                        <textarea type="text" class="form-control" name="message" id="message"
+                                  value="{{ formValues.message }}" rows="5"></textarea>
+                    </div>
+                    {% if formContactValidations.message is not empty %}
+                        <ul class="violation">
+                            {% for formContactValidations in formContactValidations.message %}
+                                <li>{{ formContactValidations }}</li>
                             {% endfor %}
                         </ul>
                     {% endif %}
@@ -64,7 +86,7 @@
 
                 <div class="mb-3 bloc-btn-form-create-post col-12 col-xl-10 col-lg-10 col-sm-10">
                     <button class="btn btn-primary col-xl-3 col-lg-3 col-sm-4 col-5 btn-form-create-post" type="submit"
-                            name="createPost">Envoyer
+                            name="submit">Envoyer
                     </button>
                     <a class="btn btn-danger col-xl-3 col-lg-3 col-sm-4 col-5 btn-form-create-post" href="/"
                        role="button">Annuler</a>

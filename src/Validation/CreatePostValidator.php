@@ -23,10 +23,10 @@ class CreatePostValidator
 
 
         if(!empty($postValues['title']) && strlen($postValues['title']) >255 ){
-            $createPostViolations ['title'] [] = "Trop de carctères saisies";
+            $createPostViolations ['title'] [] = "Trop de caractères saisis";
         }
         if(!empty($postValues['subtitle']) && strlen($postValues['subtitle']) >255 ){
-            $createPostViolations ['subtitle'] [] = "Trop de carctères saisies";
+            $createPostViolations ['subtitle'] [] = "Trop de caractères saisis";
         }
 
         return $createPostViolations;

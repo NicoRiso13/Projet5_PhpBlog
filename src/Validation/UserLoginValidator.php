@@ -13,10 +13,10 @@ class UserLoginValidator
             $violations ['loginEmail'] [] = "Email incorrect !!";
         }
         if(!empty($values['loginEmail']) && strlen($values['loginEmail']) >255 ){
-            $violations ['loginEmail'] [] = "Trop de carctères saisies";
+            $violations ['loginEmail'] [] = "Trop de caractères saisis";
         }
         if(!empty($values['loginPassword']) && strlen($values['loginPassword']) >255 ){
-            $violations ['loginPassword'] [] = "Trop de carctères saisies";
+            $violations ['loginPassword'] [] = "Trop de caractères saisis";
         }
         if (empty($values['loginEmail'])) {
             $violations ['loginEmail'] [] = "Veuillez saisir un email";

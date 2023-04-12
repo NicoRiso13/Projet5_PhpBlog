@@ -3,12 +3,10 @@
 namespace App\Controllers;
 
 use App\Entity\PostEntity;
-use App\Entity\UsersEntity;
 use App\Exceptions\EntityNotFoundException;
 use App\Repository\PostsRepository;
 use App\Router\Request;
 use App\Validation\CreatePostValidator;
-use App\Validation\UserLoginValidator;
 use Exception;
 use Twig\Environment;
 use Twig\Error\LoaderError;

@@ -292,6 +292,7 @@ font-family: 'Montserrat', sans-serif;
 .bloc-delete-message {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .delete-message {

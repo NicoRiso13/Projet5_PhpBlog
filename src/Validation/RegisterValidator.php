@@ -30,10 +30,10 @@ class RegisterValidator
         }
 
         if(!empty($userValues['surname']) && strlen($userValues['surname']) >255 ){
-            $registerViolations ['surname'] [] = "Trop de carctères saisies";
+            $registerViolations ['surname'] [] = "Trop de caractères saisis";
         }
         if(!empty($userValues['name']) && strlen($userValues['name']) >255 ){
-            $registerViolations ['name'] [] = "Trop de carctères saisies";
+            $registerViolations ['name'] [] = "Trop de caractères saisis";
         }
 
         return $registerViolations;
