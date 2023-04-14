@@ -2,15 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Entity\CommentaryEntity;
-use App\Entity\UsersEntity;
-use App\Exceptions\EntityNotFoundException;
+
 use App\Repository\CommentarysRepository;
 use App\Repository\PostsRepository;
 use App\Repository\UsersRepository;
-use App\Router\Request;
-use App\Validation\CommentaryValidator;
-use App\Validation\RegisterValidator;
 use Exception;
 use Twig\Environment;
 use Twig\Error\LoaderError;
