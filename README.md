@@ -92,10 +92,3 @@ Dans votre **projet PhpStorm** ouvrez le terminal du logiciel et saisissez la co
 
         git pull origin main
         
-
-
-
-
-
-
-
