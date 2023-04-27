@@ -48,9 +48,10 @@ class ContactControllers
             $headers[] = 'MIME-Version: 1.0';
             $headers[] = 'Content-type: text/html; charset=iso-8859-1';
             // En-têtes additionnels
-            $headers[] = 'To: Admin <nicolas.riso13@gmail.com>';
+            $headers[] = 'To: Admin <MonblogPhp@gmail.com>';
             $headers[] = "From: ".$surname." ".$name." <".$email."> " ;
-            // Envoi
+
+            mail($to, $subject, $message, implode("\r\n", $headers));
 
             $this->request->getSession()->addMessage('Message envoyé avec succés !');
             header('location: /contact');

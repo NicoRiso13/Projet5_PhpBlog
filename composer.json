@@ -12,7 +12,6 @@
   "require": {
     "ext-pdo": "*",
     "altorouter/altorouter": "^2.0",
-    "fakerphp/faker": "^1.21",
     "psr/container": "^2.0",
     "twig/cache-extra": "^3.5",
     "twig/cssinliner-extra": "^3.5",

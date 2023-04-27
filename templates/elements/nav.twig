@@ -9,7 +9,7 @@
         <div class="bloc-link">
             {% if session.user %}
                 <div class="bloc-connected">
-                    <img class="icon-Connect" src="/img/icons/iconConnect.png" alt="iconConnect">
+                    <a class="nav-link logout" href="/logout"><img class="icon-deconnect" src="/img/icons/deconnect.png" alt="iconConnect" title="Se déconnecter"></a>
                     <p class="connected">Connecté avec le compte : </p>
                     <p class="connected-pseudo">{{ session.user.email }}</p>
 
