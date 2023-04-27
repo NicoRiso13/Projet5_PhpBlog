@@ -3,9 +3,12 @@
 namespace App\Controllers;
 
 use App\Entity\PostEntity;
+use App\Entity\UsersEntity;
+use App\Exceptions\AccessDeniedException;
 use App\Exceptions\EntityNotFoundException;
 use App\Repository\PostsRepository;
 use App\Router\Request;
+use App\Router\Session;
 use App\Validation\CreatePostValidator;
 use Exception;
 use Twig\Environment;
@@ -26,6 +29,8 @@ class AdminController
         $this->twig = $twig;
         $this->postsRepository = $postsRepository;
         $this->request = $request;
+
+
     }
 
     /**
@@ -36,6 +41,10 @@ class AdminController
      */
     public function adminManager(): void
     {
+        $user = $this->request->getSession()->getUser();
+        if ($user === null || !$user->isAdmin()) {
+            throw new AccessDeniedException();
+        }
         $posts = $this->postsRepository->read();
         echo $this->twig->render('/Admin/adminManager.html.twig', ["posts" => $posts]);
     }
@@ -49,6 +58,10 @@ class AdminController
      */
     public function createPost(): void
     {
+        $user = $this->request->getSession()->getUser();
+        if ($user === null || !$user->isAdmin()) {
+            throw new AccessDeniedException();
+        }
         $postValues = $this->request->getPosts();
         $validator = new CreatePostValidator();
         $violations = $validator->postValidator($postValues);
@@ -62,11 +75,10 @@ class AdminController
 
             return;
         }
+
         echo $this->twig->render('/Admin/adminCreatePost.html.twig', ["post" => $postValues, "createPostViolations" => $violations]);
+
     }
-
-
-
 
 
     /**
@@ -77,6 +89,16 @@ class AdminController
      */
     public function updatePost(int $id): void
     {
+        $user = $this->request->getSession()->getUser();
+        if ($user === null || !$user->isAdmin()) {
+            throw new AccessDeniedException();
+        }
+        $user = $this->request->getSession()->getUser();
+
+        if ($user === null || !$user->isAdmin()) {
+            throw new AccessDeniedException();
+        }
+
         try {
             $postEntity = $this->postsRepository->findOneById($id);
         } catch (EntityNotFoundException $e) {
@@ -100,7 +122,7 @@ class AdminController
                 header('location: /admin-manager');
                 return;
             }
-        }else {
+        } else {
             $postValues ['title'] = $postEntity->getTitle();
             $postValues ['subtitle'] = $postEntity->getSubtitle();
             $postValues ['content'] = $postEntity->getContent();
@@ -119,6 +141,10 @@ class AdminController
      */
     public function deletePost(int $id): void
     {
+        $user = $this->request->getSession()->getUser();
+        if ($user === null || !$user->isAdmin()) {
+            throw new AccessDeniedException();
+        }
         $post = $this->postsRepository->findOneById($id);
         echo $this->twig->render('/Admin/deletePostPage.html.twig', ["post" => $post]);
 
@@ -126,6 +152,10 @@ class AdminController
 
     public function deletePostConfirmation(int $id): void
     {
+        $user = $this->request->getSession()->getUser();
+        if ($user === null || !$user->isAdmin()) {
+            throw new AccessDeniedException();
+        }
         $this->postsRepository->delete($id);
         $this->request->getSession()->addMessage('Post' . ' ' . $id . ' ' . 'supprimé avec succés');
         header('location: /admin-manager');

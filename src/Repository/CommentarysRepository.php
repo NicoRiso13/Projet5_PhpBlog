@@ -31,10 +31,7 @@ class CommentarysRepository
         if ($commentary === false) {
             throw new EntityNotFoundException();
         }
-        $commentaryEntity = new CommentaryEntity($commentary["id"], $commentary["content"], $commentary["refused_at"], $commentary["status"],$commentary['users_id'],$commentary['posts_id']);
-        $commentaryEntity->setCreatedAt(new \DateTime($commentary['created_at']));
-
-        return $commentaryEntity;
+        return new CommentaryEntity($commentary["id"], $commentary["content"], $commentary["refused_at"],new \DateTimeImmutable(), $commentary["status"],$commentary['users_id'],$commentary['posts_id']);
     }
 
 
@@ -43,13 +40,13 @@ class CommentarysRepository
      */
     public function findAll(): array
     {
-        $sql = ("SELECT * FROM commentarys ORDER BY created_at DESC ");
+        $sql = ("SELECT * FROM commentarys ORDER BY created_at ");
         $statement = $this->database->query($sql);
         $commentarys = $statement->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach ($commentarys as $commentary) {
-            $commentaryEntity = new CommentaryEntity($commentary['id'], $commentary['content'], new \DateTime($commentary['refused_at']), $commentary['status'], $commentary['users_id'],$commentary['posts_id']);
-            $commentaryEntity->setCreatedAt(new \DateTime($commentary['created_at']));
+            $commentaryEntity = new CommentaryEntity($commentary['id'], $commentary['content'], new \DateTime($commentary['refused_at']),new \DateTimeImmutable($commentary['created_at']), $commentary['status'], $commentary['users_id'],$commentary['posts_id']);
+            $commentaryEntity->setCreatedAt(new \DateTimeImmutable($commentary['created_at']));
 
             $result [] = $commentaryEntity;
         }
@@ -66,13 +63,13 @@ class CommentarysRepository
     {
         // Récuperation des Commentaires
 
-        $sql = ("SELECT * FROM commentarys WHERE commentarys.posts_id=? and commentarys.status='validate'");
+        $sql = ("SELECT * FROM commentarys WHERE commentarys.posts_id=? and commentarys.status='validate' ORDER BY created_at DESC ");
         $statement = $this->database->prepare($sql);
         $statement->execute([$id]);
         $commentarys = $statement->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach ($commentarys as $commentary) {
-            $result[] = new CommentaryEntity($commentary['id'], $commentary['content'], new \DateTime($commentary['created_at']), $commentary['status'],$commentary['users_id'],$commentary['posts_id']);
+            $result[] = new CommentaryEntity($commentary['id'], $commentary['content'], $commentary['refused_at'],new \DateTimeImmutable($commentary['created_at']), $commentary['status'],$commentary['users_id'],$commentary['posts_id']);
         }
 
         return $result;

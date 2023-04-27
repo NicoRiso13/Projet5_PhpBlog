@@ -22,16 +22,19 @@ font-family: 'Sarpanch', sans-serif;
 font-family: 'Montserrat', sans-serif;
 
 */
+
+
+
 .bloc-link {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 
-.icon-Connect {
-    width: 10px;
-    height: 10px;
-    margin-right: 5px;
+.icon-deconnect {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
     animation-name: icon-connect;
     animation-duration: 2s;
     opacity: 1;
@@ -133,7 +136,31 @@ font-family: 'Montserrat', sans-serif;
     background-color: darkgrey;
     border-radius: 5px;
 }
+/******************************* ERREUR 404  *************************/
 
+
+.bloc-404{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    padding: 15px;
+}
+.bloc-404 h2{
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bloc-404 img{
+   width: 35%;
+}
+.bloc-404 p{
+  font-size: 1.4rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
 
 /******************************* VIOLATION MESSAGE  *************************/
 
@@ -756,8 +783,6 @@ font-family: 'Montserrat', sans-serif;
     background-size: cover;
     background-position: 0 30%;
     font-family: 'Orbitron', sans-serif;
-    /*background: rgb(0,185,255);*/
-    /*background: linear-gradient(0deg, rgba(0,185,255,1) 0%, rgba(0,98,146,1) 33%, rgba(0,35,68,1) 62%, rgba(0,0,24,1) 91%);*/
 }
 
 .titre-post h1 {
@@ -1162,6 +1187,17 @@ textarea {
     .bloc-btn-form-create-post{
         padding-bottom: 30px;
     }
+    .titre-post h1 {
+        font-size: 1.2rem;
+    }
+
+    .titre-post h2 {
+        font-size: 1rem;
+    }
+
+    .titre-post h3 {
+        font-size: 0.6rem;
+    }
 
 }
 
@@ -1187,17 +1223,3 @@ textarea {
 }
 
 
-/************************************************ @KEYFRAME ********************************************************/
-
-@keyframes icon-connect {
-    0% {
-        opacity: 1;
-    }
-    50%{
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-
-}

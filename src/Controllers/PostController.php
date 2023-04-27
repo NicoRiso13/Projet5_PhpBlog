@@ -60,6 +60,7 @@ class PostController
         foreach ($commentarys as $commentary){
             $user = $this->usersRepository->findOneById($commentary->getUserId());
             $commentary->setUsersEntity($user);
+
         }
 
         echo $this->twig->render('detailsPosts.html.twig', ["post" => $post, "commentarys" => $commentarys]);

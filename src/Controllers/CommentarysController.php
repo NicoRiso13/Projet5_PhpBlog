@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Entity\CommentaryEntity;
+use App\Exceptions\AccessDeniedException;
 use App\Exceptions\EntityNotFoundException;
 use App\Repository\CommentarysRepository;
 use App\Repository\PostsRepository;
@@ -49,16 +50,12 @@ class CommentarysController
         $commentValues = $this->request->getPosts();
         $validator = new CommentaryValidator();
         $violations = $validator->commentValidator($commentValues);
-
-
         if (count($violations) === 0) {
-
             $userId = $this->request->getSession()->getUser()->getId();
-            $commentaryEntity = new CommentaryEntity(null, $commentValues['comment'], null, 'submission', $userId , $id);
+            $commentaryEntity = new CommentaryEntity(null, $commentValues['comment'], null, new \DateTimeImmutable(),'submission', $userId , $id);
             $this->commentarysRepository->add($commentaryEntity);
             $this->request->getSession()->addMessage('Message en attente de validation !');
             header('location: /posts/'.$id);
-
 
             return;
         }
@@ -74,7 +71,10 @@ class CommentarysController
      */
     public function viewAllCommentarys(): void
     {
-
+        $user = $this->request->getSession()->getUser();
+        if ($user === null || !$user->isAdmin()) {
+            throw new AccessDeniedException();
+        }
         $commentarys = $this->commentarysRepository->findAll();
         foreach ($commentarys as $commentary) {
             $user = $this->usersRepository->findOneByid($commentary->getUserId());
@@ -97,6 +97,10 @@ class CommentarysController
 ///    VALIDATION D'UN COMMENTAIRE
     public function commentaryIsValidate(int $id): void
     {
+        $user = $this->request->getSession()->getUser();
+        if ($user === null || !$user->isAdmin()) {
+            throw new AccessDeniedException();
+        }
         try {
             $commentaryEntity = $this->commentarysRepository->findOneById($id);
         } catch (EntityNotFoundException $e) {
@@ -113,6 +117,10 @@ class CommentarysController
 ///    REFUS D'UN COMMENTAIRE
     public function commentaryIsRefused(int $id): void
     {
+        $user = $this->request->getSession()->getUser();
+        if ($user === null || !$user->isAdmin()) {
+            throw new AccessDeniedException();
+        }
         try {
             $commentaryEntity = $this->commentarysRepository->findOneById($id);
         } catch (EntityNotFoundException $e) {

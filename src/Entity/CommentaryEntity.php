@@ -3,13 +3,14 @@
 namespace App\Entity;
 
 use DateTime;
+use DateTimeImmutable;
 
 class CommentaryEntity
 {
 
     private ?int $id;
     private string $content;
-    private datetime $createdAt;
+    private ?datetimeImmutable $createdAt;
     private ?datetime $refusedAt;
     private string $status;
     private int $userId;
@@ -21,15 +22,16 @@ class CommentaryEntity
      * @param ?int $id
      * @param string $content
      * @param DateTime|null $refusedAt
+     * @param DateTimeImmutable|null $createdAt
      * @param string $status
      * @param int $userId
      * @param int $postId
      */
-    public function __construct(?int $id, string $content, ?DateTime $refusedAt, string $status, int $userId, int $postId)
+    public function __construct(?int $id, string $content, ?DateTime $refusedAt, ?DateTimeImmutable $createdAt, string $status, int $userId, int $postId)
     {
         $this->id = $id;
         $this->content = $content;
-        $this->createdAt = new DateTime();
+        $this->createdAt = $createdAt;
         $this->refusedAt = $refusedAt;
         $this->status = $status;
         $this->userId = $userId;
@@ -127,17 +129,17 @@ class CommentaryEntity
     }
 
     /**
-     * @return DateTime
+     * @return DateTimeImmutable
      */
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
     }
 
     /**
-     * @param DateTime $createdAt
+     * @param DateTimeImmutable|null $createdAt
      */
-    public function setCreatedAt(DateTime $createdAt): void
+    public function setCreatedAt(?DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
