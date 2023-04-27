@@ -27,9 +27,7 @@ try {
     $database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $router->routes($twig, $database, $request);
 }catch(\App\Exceptions\AccessDeniedException $accessDenied){
-
     echo $twig->render('/Exceptions/erreur404.html.twig');
-
 } catch (Exception $e) {
     echo('Erreur : ' . $e->getMessage());
 }
